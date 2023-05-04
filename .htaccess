@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !/public/*
+    RewriteCond %{REQUEST_FILENAME} !index.php
+    RewriteRule ^(.*)$ index.php/$0 [L]
+</IfModule>
