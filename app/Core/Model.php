@@ -12,6 +12,7 @@ trait Model {
     public $offset = 0;
     public $orderColumn = 'id';
     public $orderType = 'asc';
+    public $errors = [];
 
     public function findAll() {
         $query = "select * from $this->table "

@@ -4,9 +4,11 @@
 
 namespace App\Core;
 
-class Controller {
+trait Controller {
 
-    public function view($name) {
+    public function view($name,$data = []) {
+        if(!empty($data)) extract($data);
+
         $filename = __DIR__ . "\\..\\Views\\" . $name . ".view.php";
         
         if(file_exists($filename)) {
@@ -16,7 +18,6 @@ class Controller {
             require $filename;
         }
     }
-
 }
 
 ?>
