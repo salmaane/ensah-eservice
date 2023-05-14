@@ -120,6 +120,7 @@ header.top-navbar {
 }
 
 .tache a {
+    text-decoration: none;
     display: flex;
     gap: 10px;
     font-size: 15px;
@@ -128,6 +129,8 @@ header.top-navbar {
     font-weight: bold;
     border: 1px solid transparent;
     border-radius: 5px;
+    color: #fff;
+
 }
 .tache a:hover {
     background-color: #5268ff;
@@ -142,54 +145,3 @@ select {
     font-family: work-sans,"sans-serif";
     cursor: pointer;
 }
-/*.container-css {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    background-color: aqua;*/
-/*    height: 350px; !*à modifier selen l'espace dispo dans la page d'emploi *!*/
-/*  }*/
-  /* modules */
-/*  .modules {
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
-    justify-content: space-around;
-    width: 13%;
-    align-self: stretch;
-    background-color: #ccc;
-    border-radius: 3px;
-  }
-  .modules .div {
-    background-color: #aaa;
-    border-radius: 3px;
-    padding: 5px 0;
-    text-align: center;
-    width: 90%;
-  }
-  !* table *!
-  .table {
-    width: 85%;
-  }
-  .th, .tr, .td {
-    border-collapse: collapse;
-    padding: 10px;
-    border-radius: 3px;
-    text-align: center;
-    font-weight: bold;
-  }
-  .th {
-    background-color: #bbb;
-  }
-  .td:first-child{
-    background-color: #bbb;
-    width: 13%;
-  }
-  .th:first-child {
-    background-color: transparent;
-  }
-  .td:not(:first-child){
-    background-color: #ccc;
-    width: 10%;
-  }*/
-  
-  /* pour media queries msg""il faut se connecter avec un pc|une grande screen */

@@ -14,6 +14,11 @@ trait Model {
     public $orderType = 'asc';
     public $errors = [];
 
+    public function getlastInsertedId($id) {
+        $result = $this->query("select max($id) as max from $this->table");
+        return $result[0]->max;
+    }
+
     public function findAll() {
         $query = "select * from $this->table "
                 ."order by $this->orderColumn $this->orderType "

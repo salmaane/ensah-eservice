@@ -26,7 +26,46 @@ define('DB_PASS','');
 define('PATHS', [
     ''=>['class' =>  'App\Controllers\Login', 'method' => 'index'],
     'login'=>['class' =>  'App\Controllers\Login', 'method' => 'index'],
-    'home'=>['class' =>  'App\Controllers\Home', 'method' => 'index']
+    'home'=>['class' =>  'App\Controllers\Home', 'method' => 'index'],
+    'logout' => ['class' => 'App\Controllers\Logout' , 'method' => 'index'],
+    'home/compte' => ['class' => 'App\Controllers\Compte' , 'method' => 'index']
 ]);
+
+//Account types
+define('ACC_TYPES', 
+    [
+        'administrateur' => [
+            'Créer filière' => '',
+            'Créer compte utilisateur' => 'home/compte',
+            'Designer cordinateur'  => '',
+            'Designer chef departement'  => '',
+        ],
+        'professeur' => [
+            'Saisir notes N/R'=> '',
+            'Consulter emploi du temps' => '',
+            'Consulter les modules' => '',
+            'Consulter etudiants de chaque modules' => ''
+        ],
+        'chef du département' => [
+            'Saisir notes N/R'=>'',
+            'Consulter emploi du temps'=>'',
+            'Consulter les modules'=>'',
+            'Consulter etudiants de chaque modules'=>'',
+            'consulter module du departement'=>'',
+            'consulter liste des profs du departement'=>''
+        ],
+        'coordinateur' => [
+            'Saisir notes N/R'=>'',
+            'Consulter emploi du temps'=>'',
+            'Consulter les modules'=>'',
+            'Consulter etudiants de chaque modules'=>'',
+            'affecter modules aux professeurs'=>'',
+            'Gerer emploi du temps'=>'',
+            'Consulter les notes'=>'',
+            'Consulter les descriptifs du filière'=>''
+        ],
+        'étudiant' => []
+    ]
+);
 
 ?> 

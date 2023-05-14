@@ -11,9 +11,7 @@ class Login {
 
     public function index() {
         $data = [];
-        if(isset($_SESSION['user_data'])) {
-            unset($_SESSION['user_data']);
-        }
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $account = new Accounts();
             

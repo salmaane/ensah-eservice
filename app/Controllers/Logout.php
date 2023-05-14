@@ -3,15 +3,16 @@
 namespace App\Controllers;
 use App\Core\Controller;
 
-class Home {
+class Logout {
     use Controller;
 
     public function index() {
-        if(!isset($_SESSION['user_data'])) {
-            redirect('');
+        if(isset($_SESSION['user_data'])) {
+            unset($_SESSION['user_data']);
         }
-        $this->view('home');
+        redirect('');
     }
+
 
 }
 
