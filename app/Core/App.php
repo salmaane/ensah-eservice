@@ -5,7 +5,7 @@ use App\Controllers\NotFound;
 
 class App {
 
-    private $controller = 'Home';
+    private $controller = 'login';
     private $method = 'index';
 
     public function __construct() {

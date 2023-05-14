@@ -7,8 +7,13 @@ class Home {
     use Controller;
 
     public function index() {
-
-        $this->view('home');
+        if(!isset($_SESSION['user_data'])) {
+            redirect('');
+        }
+        $data['acc_types'] = [
+            'admin' => ['Créer filière','Créer compte utilisateur','Designer cordinateur','Designer chef departement']
+        ];
+        $this->view('home',$data);
     }
 
 }

@@ -18,15 +18,15 @@ define('ASSETS_ICONS',URL_ROOT . 'public/assets/icons/');
 // DB Params
 define('DB_DRIVER','mysql');
 define('DB_HOST','localhost');
-define('DB_NAME','ensah');
+define('DB_NAME','eservice_ensah');
 define('DB_USER','root');
-define('DB_PASS','salmane');
+define('DB_PASS','');
 
 // path config
 define('PATHS', [
     ''=>['class' =>  'App\Controllers\Login', 'method' => 'index'],
     'login'=>['class' =>  'App\Controllers\Login', 'method' => 'index'],
-    'home'=>['class' =>  'App\Controllers\Home', 'method' => 'index'],
+    'home'=>['class' =>  'App\Controllers\Home', 'method' => 'index']
 ]);
 
 ?> 

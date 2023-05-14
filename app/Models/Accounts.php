@@ -1,14 +1,14 @@
 <?php
 
-// Users class
+// Accounts class
 
 namespace App\Models;
 use App\Core\Model;
 
-class Users {
+class Accounts {
     use Model;
 
-    protected $table = 'Users';
+    protected $table = 'accounts';
 
 }
 
