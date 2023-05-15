@@ -10,6 +10,13 @@ class ChefDep {
 
     protected $table = 'chef_dep';
 
+    public function __construct($limit=50, $offset=0, $orderType='asc')
+    {
+       $this->orderColumn = 'id';
+       $this->limit = $limit;
+       $this->offset = $offset;
+       $this->orderType = $orderType;
+    }
 }
 
 ?>

@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="tache">
-      
-      <a href="<?=URL_ROOT?>home">Acceuil</a>
+        <a href="<?=URL_ROOT?>home">Acceuil</a>
+
       <?php foreach(ACC_TYPES[$_SESSION['user_data']->type] as $acc_type => $link) {?>
         <a href="<?=URL_ROOT . $link?>"><?=$acc_type?></a>
       <?php } ?>
@@ -42,40 +42,33 @@
 
   <main>
 
-  <div class="me-2 card-deck p-5 card me-1">
-      <h1 class="mt-1 text-center">Statistique de l'école</h1>
-      <div class="col p-5 gap-3">
-        <div class="row mb-3 gap-3">
-          <div class="card bg-light col">
-            <div class="card-body">
-              <h5 class="card-title">Nombre de filières</h5>
-              <p class="card-text">10</p>
-            </div>
-          </div>
-          <div class="card bg-light col">
-            <div class="card-body">
-              <h5 class="card-title">Nombre de départements</h5>
-              <p class="card-text">10</p>
-            </div>
-         </div>
+  <div class="me-2 bg-light card-deck p-5 card me-1">
+      <h1 class="mb-4">Créer département</h1>
+
+       <?php if (isset($errors)) { ?> 
+            <div class="alert alert-danger w-50"><?= implode('<br/>', $errors) ?></div>
+        <?php } ?>
+  
+        <?php if (isset($success)) { ?>
+            <div class="alert alert-success w-50"><?= implode('<br/>', $success) ?></div>
+        <?php } ?>
+
+      <p class="fw-bold">Veuillez entrez les informations du déepartement à créer :</p>
+
+      <form class="w-50 mb-5" method="post">
+        <div class="mb-3 w-50">
+          <label for="name" class="form-label">Nom du département</label>
+          <input name="name" type="text" class="form-control" id="name" required autocomplete="off">
         </div>
 
-        <div class="row mb-3 gap-3">
-          <div class="card bg-light col" >
-            <div class="card-body">
-              <h5 class="card-title">Nombre de filières</h5>
-              <p class="card-text">10</p>
-            </div>
-          </div>
-          <div class="card bg-light col" >
-            <div class="card-body">
-              <h5 class="card-title">Nombre de départements</h5>
-              <p class="card-text">10</p>
-            </div>
+        <div class="mb-3 form-group">
+          <label for="descriptif" class="form-label">Ajouter descriptif</label>
+          <textarea name="descriptif" class="form-control" id="descriptif" rows="3"></textarea>
         </div>
-      </div>
-  </div>
 
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </form>
+    </div>
   </main>
 </body>
 </html>

@@ -29,7 +29,7 @@
     </div>
   </aside>
 
-  <header class="top-navbar d-flex justify-content-between" >
+  <header class="top-navbar d-flex justify-content-between z-3 me-1" >
     <form class="d-flex justify-content-between">
       <input type="search" placeholder="Recherche par mot clé" class="search-input"/>
       <button class="search-button"><img src="<?=ASSETS_ICONS?>search.svg" alt="" class="search-icon"/></button>
@@ -41,7 +41,7 @@
   </header>
 
   <main>
-  <div class="container">
+  <div class="me-2 card card-deck p-5 bg-light">
       <h1 class="mb-4">Créer compte utilisateur</h1>
 
         <?php if(isset($errors)) {?>

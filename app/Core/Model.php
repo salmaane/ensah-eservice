@@ -8,7 +8,7 @@ trait Model {
 
     use Database;
 
-    public $limit = 10;
+    public $limit = 50;
     public $offset = 0;
     public $orderColumn = 'id';
     public $orderType = 'asc';

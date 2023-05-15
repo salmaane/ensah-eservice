@@ -28,17 +28,20 @@ define('PATHS', [
     'login'=>['class' =>  'App\Controllers\Login', 'method' => 'index'],
     'home'=>['class' =>  'App\Controllers\Home', 'method' => 'index'],
     'logout' => ['class' => 'App\Controllers\Logout' , 'method' => 'index'],
-    'home/compte' => ['class' => 'App\Controllers\Compte' , 'method' => 'index']
+    'home/compte' => ['class' => 'App\Controllers\Compte' , 'method' => 'index'],
+    'home/departement' => ['class' => 'App\Controllers\Departement' , 'method' => 'index'],
+    'home/filiere' => ['class' => 'App\Controllers\Filiere' , 'method' => 'index'],
 ]);
 
 //Account types
 define('ACC_TYPES', 
     [
         'administrateur' => [
-            'Créer filière' => '',
+            'Créer département' => 'home/departement',
+            'Créer filière' => 'home/filiere',
             'Créer compte utilisateur' => 'home/compte',
-            'Designer cordinateur'  => '',
-            'Designer chef departement'  => '',
+            'Designer cordinateur'  => 'home/coordinateur',
+            'Designer chef departement'  => 'home/chef_dep',
         ],
         'professeur' => [
             'Saisir notes N/R'=> '',
