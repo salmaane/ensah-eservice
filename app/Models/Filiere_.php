@@ -3,10 +3,13 @@
 // Filiere class
 
 namespace App\Models;
+
+use App\Core\Database;
 use App\Core\Model;
 
 class Filiere_ {
     use Model;
+    use Database;
 
     protected $table = 'filiere';
 
@@ -17,7 +20,10 @@ class Filiere_ {
        $this->offset = $offset;
        $this->orderType = $orderType;
     }
-
+    
+    public function getFiliereWithoutCoordinator() {
+        return $this->query("select * from $this->table where id_coordinator IS NULL");
+    }
 }
 
 ?>

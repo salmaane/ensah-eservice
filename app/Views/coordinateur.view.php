@@ -42,7 +42,7 @@
 
   <main>
   <div class="me-2 card card-deck p-5 bg-light">
-      <h1 class="mb-4">Créer compte utilisateur</h1>
+      <h1 class="mb-4">Designer coordinateur</h1>
 
         <?php if(isset($errors)) {?>
             <div class="alert alert-danger w-50"><?=implode('<br/>',$errors)?></div>
@@ -52,43 +52,31 @@
             <div class="alert alert-success w-50"><?=implode('<br/>',$success)?></div>
         <?php } ?>
 
-      <p class="fw-bold">Veuillez entrez les informations du compte à créer :</p>
+      <p class="fw-bold">Veuillez Choisir le coordinateur et le filiere :</p>
         
       <form class="w-50 mb-5" method="post">
-        <div class="mb-3 w-50">
-            <label for="fname" class="form-label">Prénom</label>
-            <input name="fname" type="text" class="form-control" id="fname" required autocomplete="off">
-        </div>
-        <div class="mb-3 w-50">
-            <label for="lname" class="form-label">Nom</label>
-            <input name="lname" type="text" class="form-control" id="lname" required autocomplete="off">
-        </div>
-        <div class="form-group w-50 mb-3">
-            <label for="datepicker">Date de naissance </label>
-            <input name="birthday" type="date" class="form-control" id="datepicker">
-        </div>
+
         <div class="mb-3">
-          <label class="form-label" for="acc-type">Choisir le type du compte</label>
-          <select name="acc-type" class="form-select" id="acc-type">
+          <label class="form-label" for="acc-type">Choisir le filiere </label>
+          <select name="filiere" class="form-select" id="acc-type">
             <option selected disabled>Ouvrir ce menu pour choisir</option>
-            <option value="administrateur">Administrateur</option>
-            <option value="chef du département">Chef du département</option>
-            <option value="coordinator">Coordinateur</option>
-            <option value="professeur">Professeur</option>
+            <?php foreach($filieres as $fil) { ?>
+                <option value="<?=$fil->id_filiere?>"><?= ucfirst(strtolower($fil->name)) ?></option>
+            <?php } ?>
           </select>
         </div>
 
         <div class="mb-3">
-          <label for="email" class="form-label">Adresse email</label>
-          <input name="email" type="email" class="form-control" id="email" required autocomplete="off">
+          <label class="form-label" for="acc-type">Choisir le coordinateur </label>
+          <select name="coordinator" class="form-select" id="acc-type">
+            <option selected disabled>Ouvrir ce menu pour choisir</option>
+            <?php foreach($coordinators as $coord) { ?>
+                <option value="<?=$coord->id_coordinator?>"><?= ucfirst(strtolower($coord->fname .' '. $coord->lname)) ?></option>
+            <?php } ?>
+          </select>
         </div>
 
-        <div class="mb-3">
-          <label for="password" class="form-label">Mot de passe</label>
-          <input name="password" type="password" class="form-control" id="password" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Créer compte</button>
+        <button type="submit" class="btn btn-primary">Designer coordinateur</button>
       </form>
     </div>
   </main>

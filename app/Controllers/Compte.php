@@ -24,7 +24,7 @@ class Compte {
                 $acc_input['birthday'] = $_POST['birthday'];
 
                 $type = "App\Models\\" . ucfirst($input['type']);
-                $type = new $type ;
+                $type = new $type;
 
                 $account->insert($input);
                 $acc_input['id_account'] = $account->getlastInsertedId('id_account');

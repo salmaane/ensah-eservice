@@ -31,6 +31,7 @@ define('PATHS', [
     'home/compte' => ['class' => 'App\Controllers\Compte' , 'method' => 'index'],
     'home/departement' => ['class' => 'App\Controllers\Departement' , 'method' => 'index'],
     'home/filiere' => ['class' => 'App\Controllers\Filiere' , 'method' => 'index'],
+    'home/coordinateur' => ['class' => 'App\Controllers\Coordinateur' , 'method' => 'index'],
 ]);
 
 //Account types
