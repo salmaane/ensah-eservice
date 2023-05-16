@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\administrator;
 use App\Core\Controller;
 use App\Models\Accounts;
 
@@ -38,7 +38,7 @@ class Compte {
         }
 
 
-        $this->view('compte',$data);
+        $this->view('administrator/compte',$data);
     }
 
 

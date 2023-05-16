@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\administrator;
 use App\Core\Controller;
 use App\Models\Filiere_;
 use App\Models\Dep;
@@ -31,7 +31,7 @@ class Filiere {
         }
 
 
-        $this->view('filiere',$data);
+        $this->view('administrator/filiere',$data);
     }
 
     private function getDepartments() {

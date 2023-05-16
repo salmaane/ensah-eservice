@@ -99,6 +99,17 @@ trait Model {
         $this->query($query,$data);
     }
 
+    public function join($tables, $joinColumns, $columnValue = []) {
+        $query = "select * from $this->table";
+        for($i=0; $i< count($tables); $i++) {
+            $query .= " join ".$tables[$i]." using(".$joinColumns[$i].")";
+        }
+
+        if(!empty($columnValue)) {
+            $query .= " where ".$columnValue['column']." = ". $columnValue['value'];
+        }
+        return $this->query($query);
+    }
 }
 
 ?>

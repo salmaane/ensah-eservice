@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\administrator;
 
 use App\Core\Controller;
 use App\Models\ChefDepartement;
@@ -35,7 +35,7 @@ class Chef_dep
     }
 
 
-    $this->view('designerChef', $data);
+    $this->view('administrator/designerChef', $data);
   }
 
   private function getDepartments()

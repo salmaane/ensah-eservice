@@ -28,11 +28,13 @@ define('PATHS', [
     'login'=>['class' =>  'App\Controllers\Login', 'method' => 'index'],
     'home'=>['class' =>  'App\Controllers\Home', 'method' => 'index'],
     'logout' => ['class' => 'App\Controllers\Logout' , 'method' => 'index'],
-    'home/compte' => ['class' => 'App\Controllers\Compte' , 'method' => 'index'],
-    'home/departement' => ['class' => 'App\Controllers\Departement' , 'method' => 'index'],
-    'home/filiere' => ['class' => 'App\Controllers\Filiere' , 'method' => 'index'],
-    'home/coordinateur' => ['class' => 'App\Controllers\Coordinateur' , 'method' => 'index'],
-    'home/chef_dep' => ['class' => 'App\Controllers\Chef_dep', 'method' => 'index'],
+    'home/compte' => ['class' => 'App\Controllers\administrator\Compte' , 'method' => 'index'],
+    'home/departement' => ['class' => 'App\Controllers\administrator\Departement' , 'method' => 'index'],
+    'home/filiere' => ['class' => 'App\Controllers\administrator\Filiere' , 'method' => 'index'],
+    'home/coordinateur' => ['class' => 'App\Controllers\administrator\Coordinateur' , 'method' => 'index'],
+    'home/chef_dep' => ['class' => 'App\Controllers\administrator\Chef_dep', 'method' => 'index'],
+
+    'home/consulterModule' => ['class' => 'App\Controllers\coordinator\ConsulterModule', 'method' => 'index'], 
 ]);
 
 //Account types
@@ -52,21 +54,16 @@ define('ACC_TYPES',
             'Consulter etudiants de chaque modules' => ''
         ],
         'chefDepartement' =>  [
-            'Saisir notes N/R'=>'',
             'Consulter emploi du temps'=>'',
             'Consulter les modules'=>'',
-            'Consulter etudiants de chaque modules'=>'',
             'consulter module du departement'=>'',
             'consulter liste des profs du departement'=>''
         ],
         'coordinator' => [
-            'Saisir notes N/R'=>'',
             'Consulter emploi du temps'=>'',
-            'Consulter les modules'=>'',
-            'Consulter etudiants de chaque modules'=>'',
+            'Consulter les modules'=>'home/consulterModule',
             'affecter modules aux professeurs'=>'',
             'Gerer emploi du temps'=>'',
-            'Consulter les notes'=>'',
             'Consulter les descriptifs du filière'=>''
         ],
     ]

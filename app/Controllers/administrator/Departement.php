@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\administrator;
 use App\Core\Controller;
 use App\Models\Dep;
 
@@ -28,7 +28,7 @@ class Departement {
         }
 
 
-        $this->view('departement',$data);
+        $this->view('administrator/departement',$data);
     }
 
 

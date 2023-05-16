@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\administrator;
 use App\Core\Controller;
 use App\Models\Filiere_;
 use App\Models\Coordinator;
@@ -22,7 +22,7 @@ class Coordinateur {
             $data['success'] = ['Coordinateur designé avec success'];
        }
        
-        $this->view('designerCoordinateur',$data);
+        $this->view('administrator/designerCoordinateur',$data);
     }
 
     private function getAllCoordinator() {
