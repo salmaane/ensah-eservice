@@ -16,7 +16,7 @@
       <img src="<?=ASSETS_IMAGES?>Profile-Icon.png" alt="" class="profile-icon"/>
       <div>
         <h5 class="m-0">Mohamed Haitham</h5>
-        <p class="acc-type m-0"><?=$_SESSION['user_data']->type?></p>
+        <p class="acc-type m-0"><?= parseAccType($_SESSION['user_data']->type) ?></p>
       </div>
     </div>
     <div class="tache">

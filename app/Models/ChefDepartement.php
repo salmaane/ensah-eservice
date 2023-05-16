@@ -5,14 +5,14 @@
 namespace App\Models;
 use App\Core\Model;
 
-class ChefDep {
+class ChefDepartement {
     use Model;
 
     protected $table = 'chef_dep';
 
     public function __construct($limit=50, $offset=0, $orderType='asc')
     {
-       $this->orderColumn = 'id';
+       $this->orderColumn = 'id_chef';
        $this->limit = $limit;
        $this->offset = $offset;
        $this->orderType = $orderType;

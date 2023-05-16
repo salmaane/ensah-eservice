@@ -32,6 +32,7 @@ define('PATHS', [
     'home/departement' => ['class' => 'App\Controllers\Departement' , 'method' => 'index'],
     'home/filiere' => ['class' => 'App\Controllers\Filiere' , 'method' => 'index'],
     'home/coordinateur' => ['class' => 'App\Controllers\Coordinateur' , 'method' => 'index'],
+    'home/chef_dep' => ['class' => 'App\Controllers\Chef_dep', 'method' => 'index'],
 ]);
 
 //Account types
@@ -50,7 +51,7 @@ define('ACC_TYPES',
             'Consulter les modules' => '',
             'Consulter etudiants de chaque modules' => ''
         ],
-        'chef du département' => [
+        'chefDepartement' =>  [
             'Saisir notes N/R'=>'',
             'Consulter emploi du temps'=>'',
             'Consulter les modules'=>'',
@@ -58,7 +59,7 @@ define('ACC_TYPES',
             'consulter module du departement'=>'',
             'consulter liste des profs du departement'=>''
         ],
-        'coordinateur' => [
+        'coordinator' => [
             'Saisir notes N/R'=>'',
             'Consulter emploi du temps'=>'',
             'Consulter les modules'=>'',
@@ -68,7 +69,6 @@ define('ACC_TYPES',
             'Consulter les notes'=>'',
             'Consulter les descriptifs du filière'=>''
         ],
-        'étudiant' => []
     ]
 );
 

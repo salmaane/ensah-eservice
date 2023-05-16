@@ -16,7 +16,7 @@
       <img src="<?=ASSETS_IMAGES?>Profile-Icon.png" alt="" class="profile-icon"/>
       <div>
         <h5 class="m-0">Mohamed Haitham</h5>
-        <p class="acc-type m-0"><?=$_SESSION['user_data']->type?></p>
+        <p class="acc-type m-0"><?= parseAccType($_SESSION['user_data']->type) ?></p>
       </div>
     </div>
     <div class="tache">
@@ -65,14 +65,14 @@
         </div>
         <div class="form-group w-50 mb-3">
             <label for="datepicker">Date de naissance </label>
-            <input name="birthday" type="date" class="form-control" id="datepicker">
+            <input name="birthday" type="date" class="form-control" id="datepicker" required>
         </div>
         <div class="mb-3">
           <label class="form-label" for="acc-type">Choisir le type du compte</label>
-          <select name="acc-type" class="form-select" id="acc-type">
+          <select name="acc-type" class="form-select" id="acc-type" required>
             <option selected disabled>Ouvrir ce menu pour choisir</option>
             <option value="administrateur">Administrateur</option>
-            <option value="chef du département">Chef du département</option>
+            <option value="chefDepartement">Chef du département</option>
             <option value="coordinator">Coordinateur</option>
             <option value="professeur">Professeur</option>
           </select>

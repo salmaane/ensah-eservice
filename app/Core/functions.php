@@ -14,3 +14,15 @@ function redirect($path) {
     header("Location: " . URL_ROOT . $path);
     die;
 }
+
+function parseAccType($acc_type) {
+    switch($acc_type) {
+        case 'chefDepartement':
+            return 'chef du département';
+        
+        case 'coordinator':
+            return 'Coordinateur';
+        default:
+            return ucfirst($acc_type);
+    }
+}

@@ -22,7 +22,7 @@ class Coordinateur {
             $data['success'] = ['Coordinateur designé avec success'];
        }
        
-        $this->view('coordinateur',$data);
+        $this->view('designerCoordinateur',$data);
     }
 
     private function getAllCoordinator() {

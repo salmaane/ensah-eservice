@@ -22,7 +22,7 @@ class Filiere_ {
     }
     
     public function getFiliereWithoutCoordinator() {
-        return $this->query("select * from $this->table where id_coordinator IS NULL");
+        return $this->query("select * from $this->table");
     }
 }
 
