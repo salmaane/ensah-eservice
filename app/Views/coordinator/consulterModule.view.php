@@ -8,7 +8,6 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <link rel="stylesheet" href="<?=ASSETS_CSS?>home.css" />
-  <link rel="stylesheet" href="<?=ASSETS_CSS?>consulterModule.css" />
 </head>
 <body class="body">
   
@@ -67,6 +66,7 @@
                             <div class="mb-3">
                                 <label for="module-name" class="col-form-label">Nom du module</label>
                                 <input name="" type="text" class="form-control mb-3" id="module-name" required>
+                                <input hidden type= "text" name="id_module" value="" id="hidden_input"/>
                                 <button type="submit" class="btn btn-success ">Confirmer</button>
                             </div>
                         </form>
@@ -78,7 +78,30 @@
                 </div>
             </div>
 
-                <?php if(!empty($module_prof_rows)) {?>
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Supprimer Module</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="mb-3">
+                                <p id="confirm-paragraph" >êtes-vous sûr de supprimer le module :</p>
+                                <input hidden type= "text" name="delete-module" value="" id="hidden_input2"/>
+                                <button type="submit" class="btn btn-success ">Confirmer</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+                <?php if(!empty($modules_merged)) {?>
                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -88,16 +111,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($module_prof_rows as $row) {?>
-                                <tr>
-                                    <td class="text-center"><?=$row->name?></td>
-                                    <td class="text-center"><?=$row->lname .' '.$row->fname?></td>
+                            <?php foreach($modules_merged as $row) {?>
+                                <tr id="module_row" >
+                                    <td class="text-center"><?=ucfirst($row->name)?></td>
+                                    <td class="text-center"><?= isset($row->fname) ? $row->lname .' '.$row->fname : 'Non affecté' ?></td>
                                     <td class="text-center">
-                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-whatever="Modifier">Modifier</button>
-                                        <button class="btn btn-danger btn-sm" >Supprimer</button>
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-whatever="Modifier" 
+                                           data-id_module ="<?=$row->id_module?>" onclick="setModuleId(event)" >Modifier</button>
+                                        <button class="btn btn-danger btn-sm"  data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-whatever="Supprimer"
+                                           data-module_name ="<?=$row->name?>" data-id_module ="<?=$row->id_module?>" onclick="setModuleId2(event)" >Supprimer</button>
                                     </td>
                                 </tr>
                             <?php } ?>
+
                         </tbody>
                     </table>
 
@@ -110,7 +136,24 @@
         </div>
   </main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function setModuleId(e) {
+    let id_module = e.target.getAttribute('data-id_module');
+    let hidden_input= document.querySelector('#hidden_input');
+    hidden_input.value = id_module;
+  }
+  function setModuleId2(e) {
+    let id_module = e.target.getAttribute('data-id_module');
+    let module_name = e.target.getAttribute('data-module_name');
+    
+    let confirmText = document.querySelector('#confirm-paragraph');
+    confirmText.textContent += ' ' + module_name;
+
+    let hidden_input= document.querySelector('#hidden_input2');
+    hidden_input.value = id_module;
+  }
+</script>
 <script src="<?=ASSETS_JS . 'consulterModule.js'?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -99,7 +99,7 @@ trait Model {
         $this->query($query,$data);
     }
 
-    public function join($tables, $joinColumns, $columnValue = []) {
+    public function join($tables, $joinColumns, $columnValue = [], $adittionalQuery = '') {
         $query = "select * from $this->table";
         for($i=0; $i< count($tables); $i++) {
             $query .= " join ".$tables[$i]." using(".$joinColumns[$i].")";
@@ -108,6 +108,9 @@ trait Model {
         if(!empty($columnValue)) {
             $query .= " where ".$columnValue['column']." = ". $columnValue['value'];
         }
+
+        $query .= ' ' . $adittionalQuery;
+
         return $this->query($query);
     }
 }
