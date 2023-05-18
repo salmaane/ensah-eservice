@@ -36,6 +36,7 @@ define('PATHS', [
 
     'home/consulterModule' => ['class' => 'App\Controllers\coordinator\ConsulterModule', 'method' => 'index'], 
     'home/consulterDescriptif' => ['class' => 'App\Controllers\coordinator\ConsulterDescriptif', 'method' => 'index'], 
+    'home/consulterModuleProf' => ['class' => 'App\Controllers\professeur\ConsulterModuleProf', 'method' => 'index'],
 ]);
 
 //Account types
@@ -50,11 +51,10 @@ define('ACC_TYPES',
         ],
         'professeur' => [
             'Consulter emploi du temps' => '',
-            'Consulter les modules' => '',
+            'Consulter les modules' => 'home/consulterModuleProf',
         ],
         'chefDepartement' =>  [
             'Consulter emploi du temps'=>'',
-            'Consulter les modules'=>'',
             'consulter module du departement'=>'',
             'consulter liste des profs du departement'=>''
         ],
