@@ -15,7 +15,7 @@ class Filiere {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $filiere = new Filiere_();
 
-            $inputs['name'] = strtoupper($_POST['name']);
+            $inputs['name'] = ucwords($_POST['name']);
             $filiere_row = $filiere->first($inputs);
             
             if(!$filiere_row) {

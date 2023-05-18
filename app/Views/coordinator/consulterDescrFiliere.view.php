@@ -8,6 +8,21 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <link rel="stylesheet" href="<?=ASSETS_CSS?>home.css" />
+
+  <style>
+
+    #update-descriptif {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s ease-in-out;
+    }
+
+    #update-descriptif.open-textarea {
+        max-height: 783px;
+    }
+
+  </style>
+
 </head>
 <body class="body">
   
@@ -41,9 +56,28 @@
   </header>
 
   <main>
+      <div class="me-2 card card-deck p-5 bg-light d-flex">
+        <h1 class="mb-3">Descriptif du filiere <?=$coord_filiere_rows->name?></h1>
+        <div class="card card-deck p-4 mb-3">
+            <strong><?=$coord_filiere_rows->descriptif?></strong>
+        </div>
+        <button class="btn btn-warning align-self-end" style="width: fit-content;"
+         onclick="updateTextArea()" id='update-button'>Modifier</button>
 
-        
+        <form class="d-flex flex-column" id="update-descriptif" method="post">
+            <div class="mb-3 form-group">
+                <label for="descriptif" class="form-label">Modifier le descriptif du filiere</label>
+                <textarea name="descriptif" class="form-control w-100" id="descriptif" rows="3"></textarea>
+            </div>
+            <div class="align-self-end">
+            <button class="btn btn-secondary" style="width: fit-content;" onclick="cancelUpdate(event)">Cancel</button>
+            <button class="btn btn-success" style="width: fit-content;">Enregistrer</button>
+            </div>
+        </form>
 
+
+      </div>
   </main>
+<script src="<?=ASSETS_JS . 'consulterDescrFiliere.js'?>"></script>
 </body>
 </html>
