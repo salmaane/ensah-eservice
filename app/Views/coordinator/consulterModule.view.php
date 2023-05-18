@@ -88,8 +88,41 @@
                     <div class="modal-body">
                         <form method="post">
                             <div class="mb-3">
-                                <p id="confirm-paragraph" >êtes-vous sûr de supprimer le module :</p>
+                                <p id="confirm-paragraph" ></p>
                                 <input hidden type= "text" name="delete-module" value="" id="hidden_input2"/>
+                                <button type="submit" class="btn btn-success ">Confirmer</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="affecterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="affecterModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="mb-3">
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="acc-type">Choisir le Professeur </label>
+                                    <select name="prof" class="form-select" id="acc-type">
+                                        <option selected disabled>Ouvrir ce menu pour choisir</option>
+                                        <?php foreach($profs as $prof) { ?>
+                                            <option value="<?=$prof->id_prof?>"><?= ucfirst(strtolower($prof->lname.' '.$prof->fname))?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                
+                                <input hidden type= "text" name="affecter-module" value="" id="hidden_input3"/>
                                 <button type="submit" class="btn btn-success ">Confirmer</button>
                             </div>
                         </form>
@@ -106,15 +139,19 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="col-3 text-center">Module</th>
-                                <th scope="col" class="col-3 text-center">Prof</th>
+                                <th scope="col" class="col-3 text-center">Professeur</th>
                                 <th class="col-3 text-center"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($modules_merged as $row) {?>
                                 <tr id="module_row" >
-                                    <td class="text-center"><?=ucfirst($row->name)?></td>
-                                    <td class="text-center"><?= isset($row->fname) ? $row->lname .' '.$row->fname : 'Non affecté' ?></td>
+                                    <td class="text-center"><?=$row->name?></td>
+                                    <td class="text-center">
+                                      <?= isset($row->fname) ? $row->lname .' '.$row->fname : 'Non Affecté'?>
+                                      <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#affecterModal" data-bs-whatever="Affecter"
+                                        data-module_name ="<?=$row->name?>" data-id_module ="<?=$row->id_module?>" onclick="setModuleId3(event)" >Affecter</button>
+                                    </td>
                                     <td class="text-center">
                                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-whatever="Modifier" 
                                            data-id_module ="<?=$row->id_module?>" onclick="setModuleId(event)" >Modifier</button>
@@ -147,9 +184,19 @@
     let module_name = e.target.getAttribute('data-module_name');
     
     let confirmText = document.querySelector('#confirm-paragraph');
-    confirmText.textContent += ' ' + module_name;
+    confirmText.textContent = 'êtes-vous sûr de supprimer le module : ' + module_name;
 
     let hidden_input= document.querySelector('#hidden_input2');
+    hidden_input.value = id_module;
+  }
+  function setModuleId3(e) {
+    let id_module = e.target.getAttribute('data-id_module');
+    let module_name = e.target.getAttribute('data-module_name');
+
+    let confirmText = document.querySelector('#affecterModalLabel');
+    confirmText.textContent = 'Affecter Module ' + module_name;
+
+    let hidden_input= document.querySelector('#hidden_input3');
     hidden_input.value = id_module;
   }
 </script>

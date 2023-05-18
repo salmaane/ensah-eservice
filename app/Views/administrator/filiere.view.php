@@ -72,7 +72,7 @@
         </div>
 
         <div class="mb-3 form-group">
-          <label for="descriptif" class="form-label">Ajouter filiere</label>
+          <label for="descriptif" class="form-label">Descriptif du filiere</label>
           <textarea name="descriptif" class="form-control" id="descriptif" rows="3"></textarea>
         </div>
 
