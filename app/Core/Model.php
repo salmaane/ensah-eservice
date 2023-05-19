@@ -113,6 +113,12 @@ trait Model {
 
         return $this->query($query);
     }
+
+    public function count() {
+        $query = "select count(*) as count from $this->table";
+        $result = $this->query($query);
+        return $result[0];
+    }
 }
 
 ?>

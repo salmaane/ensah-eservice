@@ -7,7 +7,7 @@
     crossorigin="anonymous">
   <meta charset="UTF-8">
   <title>Home</title>
-  <link rel="stylesheet" href="<?=ASSETS_CSS?>home.css" />
+    <link rel="stylesheet" href="<?=ASSETS_CSS?>home.css" />
 </head>
 <body class="body">
   
@@ -41,38 +41,44 @@
   </header>
 
   <main>
-
+  <?=$visitors_count->count . ' for : '. $visitors_count->date?>
   <div class="me-2 card-deck p-5 card me-1">
-      <h1 class="mt-1 text-center">Statistique de l'école</h1>
+      <h1 class="mt-1 text-center">Statistiques de l'école</h1>
       <div class="col p-5 gap-3">
         <div class="row mb-3 gap-3">
-          <div class="card bg-light col">
-            <div class="card-body">
-              <h5 class="card-title">Nombre de filières</h5>
-              <p class="card-text">10</p>
+
+          <div class="card col text-white" style="background-color: #F9C80E;">
+            <div class="card-body d-flex align-items-center gap-5 justify-content-between">
+              <h2 class="card-title">Nombre de départements</h2>
+              <h1 class="card-text"><?=$dep_count->count?></h1>
             </div>
           </div>
-          <div class="card bg-light col">
-            <div class="card-body">
-              <h5 class="card-title">Nombre de départements</h5>
-              <p class="card-text">10</p>
+
+          <div class="card col text-white" style="background-color: #F86624;">
+            <div class="card-body d-flex align-items-center gap-5 justify-content-between">
+              <h2 class="card-title">Nombre de filières</h2>
+              <h1 class="card-text"><?=$filiere_count->count?></h1>
             </div>
-         </div>
+          </div>
+
         </div>
 
         <div class="row mb-3 gap-3">
-          <div class="card bg-light col" >
-            <div class="card-body">
-              <h5 class="card-title">Nombre de filières</h5>
-              <p class="card-text">10</p>
+
+          <div class="card col text-white" style="background-color: #EA3546;" >
+            <div class="card-body d-flex align-items-center gap-5 justify-content-between">
+              <h2 class="card-title">Nombre de professeurs</h2>
+              <h1 class="card-text"><?=$profs_count->count?></h1>
             </div>
           </div>
-          <div class="card bg-light col" >
-            <div class="card-body">
-              <h5 class="card-title">Nombre de départements</h5>
-              <p class="card-text">10</p>
+          
+          <div class="card col text-white" style="background-color: #662E9B;" >
+            <div class="card-body d-flex align-items-center gap-5 justify-content-between">
+              <h2 class="card-title">Nombre de départements</h2>
+              <h1 class="card-text"><?=$module_count->count?></h1>
             </div>
-        </div>
+          </div>
+          
       </div>
   </div>
 

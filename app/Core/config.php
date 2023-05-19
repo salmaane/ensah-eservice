@@ -14,6 +14,7 @@ define('ASSETS_CSS',URL_ROOT . 'public/assets/css/');
 define('ASSETS_IMAGES',URL_ROOT . 'public/assets/images/');
 define('ASSETS_JS',URL_ROOT . 'public/assets/js/');
 define('ASSETS_ICONS',URL_ROOT . 'public/assets/icons/');
+define('ASSETS_FONTS',URL_ROOT . 'public/assets/fonts/');
 
 // DB Params
 define('DB_DRIVER','mysql');

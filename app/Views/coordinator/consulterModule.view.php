@@ -147,10 +147,12 @@
                             <?php foreach($modules_merged as $row) {?>
                                 <tr id="module_row" >
                                     <td class="text-center"><?=$row->name?></td>
-                                    <td class="text-center">
-                                      <?= isset($row->fname) ? $row->lname .' '.$row->fname : 'Non Affecté'?>
-                                      <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#affecterModal" data-bs-whatever="Affecter"
-                                        data-module_name ="<?=$row->name?>" data-id_module ="<?=$row->id_module?>" onclick="setModuleId3(event)" >Affecter</button>
+                                    <td class="d-flex justify-content-center">
+                                        <div class="d-flex justify-content-between" style="width: 65%;">
+                                            <?= isset($row->fname) ? $row->lname .' '.$row->fname : 'Non Affecté'?>
+                                            <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#affecterModal" data-bs-whatever="Affecter"
+                                            data-module_name ="<?=$row->name?>" data-id_module ="<?=$row->id_module?>" onclick="setModuleId3(event)" >Affecter</button>
+                                        </div>
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-whatever="Modifier" 
