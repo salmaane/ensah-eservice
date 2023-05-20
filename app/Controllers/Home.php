@@ -19,7 +19,7 @@ class Home {
 
         $data = $this->getStatistics();
 
-        $data['visitors_count'] = $this->getVisitorsCount();
+        $data['visitors_count'] = json_encode(array_reverse($this->getVisitorsCount(6)));
 
         $this->view('home',$data);
     }
@@ -38,10 +38,13 @@ class Home {
         return $data;
     }
 
-    public function getVisitorsCount() {
+    public function getVisitorsCount($limit) {
         $visitors = new Visitors();
-        $input['date'] = date("Y-m-d");
-        return $visitors->first($input);
+        $visitors->limit = $limit;
+        $visitors->orderType = 'desc';
+        $visitors->orderColumn = 'id_visitors';
+        
+        return $visitors->findAll();
     }
 
 }

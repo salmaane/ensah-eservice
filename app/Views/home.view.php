@@ -41,7 +41,7 @@
   </header>
 
   <main>
-  <?=$visitors_count->count . ' for : '. $visitors_count->date?>
+
   <div class="me-2 card-deck p-5 card me-1">
       <h1 class="mt-1 text-center">Statistiques de l'école</h1>
       <div class="col p-5 gap-3">
@@ -80,8 +80,104 @@
           </div>
           
       </div>
-  </div>
+      
+    </div>
+    
+    <div class="m-3 m-auto" style="width: 740px;">
+      <div class="p-3" style="background-color: #ccc">Statistiques d'accès à eServices</div>
+      <canvas id="visitorsChart" class="bg-light" style="background-color: #eee;"></canvas>
+    </div>
+      
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let data = <?=$visitors_count?>;
+    const ctx = document.getElementById('visitorsChart');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.map(date => date.date),
+        datasets: [{
+          label: 'Nbr. de visiteurs: ',
+          lineTension: 0.2,   
+          data: data.map(date => date.count),
+          fill: true,
+          borderWidth: 1,
+          borderColor: '#3F52E3',
+          backgroundColor: 'rgba(63, 82, 227, 0.05)',
+        }]
+      },
+      options: {
+        layout: {
+          padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMin: 10,
+            suggestedMax: 50,
+            ticks: {
+              stepSize:10,
+            },
+            grid: {
+              color: 'rgba(0, 0, 0, 0.1)'
+            }
+          },
+          x: {
+            grid: {
+              color: 'rgba(0, 0, 0, 0.05)'
+            }
+          }
+        },
+        elements: {
+          point: {
+            pointBackgroundColor: '#3F52E3',
+            pointBorderWidth: 3,
+          }
+        },
+        plugins: {
+          legend: {
+            display : false,
+          },
+          tooltip: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyColor: "#333",
+            titleMarginBottom: 10,
+            titleColor: '#6e707e',
+            titleFontSize: 14,
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            intersect: false,
+            mode: 'index',
+            caretPadding: 10,
+            callbacks: {
+              label: function (context) {
+                let label = context.dataset.label || '';
+                if (label) {
+                            label += ': ';
+                }
+                if (context.parsed.y !== null) {
+                  label += context.parsed.y;
+                }
+
+                return label;
+              }
+            }
+          }
+        },
+      },
+    });
+
+  </script>
   </main>
 </body>
 </html>

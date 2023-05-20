@@ -42,7 +42,7 @@ class Login {
         
         $row = $visitors->first($input);
 
-        if(isset($row)) {        
+        if($row) {        
             $inp['count'] = $row->count + 1;
             $visitors->update($row->id_visitors, 'id_visitors',$inp);
         } else {
