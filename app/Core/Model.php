@@ -105,8 +105,10 @@ trait Model {
             $query .= " join ".$tables[$i]." using(".$joinColumns[$i].")";
         }
 
+        $query .= " where ";
+
         if(!empty($columnValue)) {
-            $query .= " where ".$columnValue['column']." = ". $columnValue['value'];
+            $query .= $columnValue['column']." = ". $columnValue['value'];
         }
 
         $query .= ' ' . $adittionalQuery;

@@ -37,6 +37,8 @@ define('PATHS', [
 
     'home/consulterModule' => ['class' => 'App\Controllers\coordinator\ConsulterModule', 'method' => 'index'], 
     'home/consulterDescriptif' => ['class' => 'App\Controllers\coordinator\ConsulterDescriptif', 'method' => 'index'], 
+    'home/gererEmploi' => ['class'=> 'App\Controllers\coordinator\GererEmploi', 'method' => 'index'],
+
     'home/consulterModuleProf' => ['class' => 'App\Controllers\professeur\ConsulterModuleProf', 'method' => 'index'],
     
     'home/consulterModuleChef' => ['class' => 'App\Controllers\chefDepartement\ConsulterModuleProf', 'method' => 'index'],
@@ -61,9 +63,8 @@ define('ACC_TYPES',
             'consulter modules et professeurs du departement'=>'home/consulterModuleChef',
         ],
         'coordinator' => [
-            'Consulter emploi du temps'=>'',
             'Consulter les modules'=>'home/consulterModule',
-            'Gerer emploi du temps'=>'',
+            'Gerer emploi du temps'=>'home/gererEmploi',
             'Consulter les descriptifs du filière'=>'home/consulterDescriptif'
         ],
     ]
