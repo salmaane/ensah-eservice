@@ -75,7 +75,7 @@
           <div class="card col text-white" style="background-color: #662E9B;" >
             <div class="card-body d-flex align-items-center gap-5 justify-content-between">
               <h2 class="card-title">Nombre de départements</h2>
-              <h1 class="card-text"><?=$module_count->count?></h1>
+              <h1 class="card-text"><?=$dep_count->count?></h1>
             </div>
           </div>
           

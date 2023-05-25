@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Models\Dep;
 use App\Core\Controller;
 use App\Models\Filiere_;
-use App\Models\Module;
 use App\Models\professeur;
 use App\Models\Visitors;
 
@@ -28,12 +27,12 @@ class Home {
         $departement = new Dep();
         $filiere = new Filiere_();
         $professeur = new Professeur();
-        $module = new Module();
+        $departement = new Dep();
 
         $data['dep_count'] = $departement->count();
         $data['profs_count'] = $professeur->count();
         $data['filiere_count'] = $filiere->count();
-        $data['module_count'] = $module->count();
+        $data['dep_count'] = $departement->count();
 
         return $data;
     }

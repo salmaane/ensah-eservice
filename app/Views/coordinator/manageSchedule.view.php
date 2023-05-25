@@ -8,6 +8,7 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <link rel="stylesheet" href="<?=ASSETS_CSS?>home.css" />
+  <link rel="stylesheet" href="<?=ASSETS_CSS?>manageSchedule.css" />
 </head>
 <body class="body">
   
@@ -39,12 +40,92 @@
       <button class="logout-button m-0"><img src="<?=ASSETS_ICONS?>logoutIcon.svg" alt="" class="logout-icon"/></button>
     </a>
   </header>
+<main>
 
-  <main>
-    <div class="me-2 card card-deck p-5 bg-light mb-5">
-        
+  <div class="card card-deck bg-light mb-4">
+    <ul class="modules-list list-unstyled d-flex gap-2 p-3 flex-wrap m-0">
+        <?php
+        $i = 1; 
+        foreach($modules_profs as $module) { ?>
+          <li>
+            <div id="<?='module-'.$i++?>" draggable="true" ondragstart="dragStartHandler(event)" class="bg-green padding-5px-tb padding-15px-lr border-radius-5 text-white font-size16  xs-font-size13">
+              <p class="lh-1 mb-1 mt-1 fw-bold text-center" ><?=$module->name?></p>
+              <div class="text-center" style="font-size: 13px"><?= isset($module->fname) ? ucwords(strtolower($module->lname.' '.$module->fname)) : '?'?></div>
+            </div>
+          </li>
+        <?php } ?>
+    </ul>
+  </div>
+
+  <div class="card card-deck bg-light pt-3" >
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr class="bg-light-gray">
+              <th class="text-uppercase" style="width: 11%;">Time</th>
+              <th class="align-middle" style="width: calc(89% / 4);">08:00 - 10:00</th>
+              <th class="align-middle" style="width: calc(89% / 4);">10:00 - 12:00</th>
+              <th class="align-middle" style="width: calc(89% / 4);">14:00 - 16:00</th>
+              <th class="align-middle" style="width: calc(89% / 4);"  >16:00 - 18:00</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="height: 5rem">
+              <th class="text-uppercase align-middle">Lundi</th>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+            </tr>
+
+            <tr style="height: 5rem">
+              <th class="text-uppercase align-middle">Mardi</th>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+            </tr>
+
+            <tr style="height: 5rem">
+              <th class="text-uppercase align-middle">Mercredi</th>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+            </tr>
+
+            <tr style="height: 5rem">
+              <th class="text-uppercase align-middle">Jeudi</th>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+            </tr>
+
+            <tr style="height: 5rem">
+              <th class="text-uppercase align-middle">Vendredi</th>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+            </tr>
+
+            <tr style="height: 5rem">
+              <th class="text-uppercase align-middle">Samedi</th>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+              <td class="module-dropzone" ></td>
+            </tr>
+
+            </tbody>
+        </table>
+      </div>
     </div>
-  </main>
-
+  </div>
+  
+</main>
+<script src="<?=ASSETS_JS . 'manageSchedule.js'?>" ></script>
 </body>
 </html>

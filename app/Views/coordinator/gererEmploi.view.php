@@ -61,9 +61,7 @@
       <?php if(empty($schedule_rows)) {?>
         <div class="card card-deck bg-light p-5 d-flex align-items-center flex-column gap-4" >
           <h2 class="opacity-50">Il n'y a pas d'emploi du temps pour ce classe</h2>
-          <button class="btn btn-success" style="width: fit-content;">
-            <a href="<?=URL_ROOT.'home/manageSchedule'?>" class="text-reset text-decoration-none">Ajouter</a>
-          </button>
+            <a href="<?=URL_ROOT.'home/manageSchedule'?>" class="btn btn-success text-decoration-none" style="width: fit-content;color: #fff;">Ajouter</a>
         </div>
       <?php } ?>
     <?php } ?>

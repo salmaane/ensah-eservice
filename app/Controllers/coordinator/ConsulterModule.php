@@ -47,7 +47,7 @@ class ConsulterModule {
                 'value' => $coord_filiere_rows[0]->id_filiere
             ];
             $data['filiere_classes'] = $filiere->join($tables,$columns,$columnValue);
-            $data['modules_merged'] = array_merge($module_prof_rows,$module_rows);     
+            $data['modules_merged'] = array_merge($module_prof_rows,$module_rows);   
         }
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -78,6 +78,7 @@ class ConsulterModule {
 
             if(isset($_POST['module-Modifier'])) {
                 $input['name'] = $_POST['module-Modifier'];
+                $input['id_class'] = $_POST['class'];
                 $module->update($_POST['id_module'],'id_module',$input);
                 
                 header("Refresh:0");
