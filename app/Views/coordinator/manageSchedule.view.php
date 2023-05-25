@@ -42,31 +42,8 @@
 
   <main>
     <div class="me-2 card card-deck p-5 bg-light mb-5">
-        <h1 class="mb-3">Gérer Emploi du temps</h1>
         
-        <form method="post" class="d-flex flex-column">
-            <div class="mb-3">
-                <label class="form-label" for="acc-type">Choisir le Niveau</label>
-                <select name="level" class="form-select" id="acc-type" required>
-                    <?php for($i=1; $i<4; $i++) { ?>
-                        <option value="<?=$i?>"><?=$filiere_infos->name . ' ' . $i?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <button class="btn btn-warning align-self-end" type="submit">Choisir</button>
-        </form>
     </div>
-    
-    <?php if($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
-      <?php if(empty($schedule_rows)) {?>
-        <div class="card card-deck bg-light p-5 d-flex align-items-center flex-column gap-4" >
-          <h2 class="opacity-50">Il n'y a pas d'emploi du temps pour ce classe</h2>
-          <button class="btn btn-success" style="width: fit-content;">
-            <a href="<?=URL_ROOT.'home/manageSchedule'?>" class="text-reset text-decoration-none">Ajouter</a>
-          </button>
-        </div>
-      <?php } ?>
-    <?php } ?>
   </main>
 
 </body>

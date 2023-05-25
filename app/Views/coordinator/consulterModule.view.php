@@ -66,6 +66,18 @@
                             <div class="mb-3">
                                 <label for="module-name" class="col-form-label">Nom du module</label>
                                 <input name="" type="text" class="form-control mb-3" id="module-name" required>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="acc-type">Choisir le classe</label>
+                                    <select name="class" class="form-select" id="acc-type">
+                                        <option selected disabled>Ouvrir ce menu pour choisir</option>
+                                        <?php foreach($filiere_classes as $class) { ?>
+                                            <option value="<?=$class->id_class?>"><?= ucfirst(strtolower($class->name . ' ' . $class->level))?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                
                                 <input hidden type= "text" name="id_module" value="" id="hidden_input"/>
                                 <button type="submit" class="btn btn-success ">Confirmer</button>
                             </div>
@@ -139,7 +151,8 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="col-3 text-center">Module</th>
-                                <th scope="col" class="col-3 text-center">Professeur</th>
+                                <th scope="col" class="col-4 text-center">Professeur</th>
+                                <th class="col-2 text-center">Classe</th>
                                 <th class="col-3 text-center"></th>
                             </tr>
                         </thead>
@@ -153,6 +166,10 @@
                                             <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#affecterModal" data-bs-whatever="Affecter"
                                             data-module_name ="<?=$row->name?>" data-id_module ="<?=$row->id_module?>" onclick="setModuleId3(event)" >Affecter</button>
                                         </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <?=$row->level?>
+                                        <?=$row->level == 1 ? 'ère année' : 'ème année' ?>
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-whatever="Modifier" 

@@ -21,8 +21,12 @@ class GererEmploi {
             'value' => $_SESSION['user_data']->id_account
         ];
         $data['filiere_infos'] = $account->join($tables, $columns, $columnValue)[0];
+        $_SESSION['id_filiere'] = $data['filiere_infos']->id_filiere;
+
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_SESSION['level'] = $_POST['level'];
+
             $tables = ['schedules'];
             $columns = ['id_class'];
             $columnValue = [

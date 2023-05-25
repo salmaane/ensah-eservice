@@ -30,22 +30,24 @@ class ConsulterModule {
         if(isset($coord_filiere_rows[0])) {
             $filiere = new Filiere_(); 
 
-            $tables = ['module_filiere', 'module', 'prof']; 
-            $columns = ['id_filiere', 'id_module', 'id_prof'];
-            $columnValue = [
-                'column' => 'id_filiere',
-                'value' => $coord_filiere_rows[0]->id_filiere
-            ];
-            $module_prof_rows = $filiere->join($tables, $columns, $columnValue);
-
+            $tables = ['module_filiere', 'module', 'prof', 'class']; 
+            $columns = ['id_filiere', 'id_module', 'id_prof', 'id_class'];
+            $module_prof_rows = $filiere->join($tables, $columns, [],"class.id_filiere = ". $coord_filiere_rows[0]->id_filiere);
             if(!$module_prof_rows) $module_prof_rows=[];
 
-            $tables = ['module_filiere','module'];
-            $columns = ['id_filiere', 'id_module'];
-            $module_rows = $filiere->join($tables, $columns, $columnValue, 'and id_prof is null');
+            $tables = ['module_filiere','module', 'class'];
+            $columns = ['id_filiere', 'id_module', 'id_class'];
+            $module_rows = $filiere->join($tables, $columns, [], 'id_prof is null and class.id_filiere = '.$coord_filiere_rows[0]->id_filiere );
             if(!$module_rows) $module_rows = [];
 
-            $data['modules_merged'] = array_merge($module_prof_rows,$module_rows);            
+            $tables = ['class'];
+            $columns = ['id_filiere'];
+            $columnValue = [
+                'column'=> 'id_filiere',
+                'value' => $coord_filiere_rows[0]->id_filiere
+            ];
+            $data['filiere_classes'] = $filiere->join($tables,$columns,$columnValue);
+            $data['modules_merged'] = array_merge($module_prof_rows,$module_rows);     
         }
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -55,6 +57,7 @@ class ConsulterModule {
 
             if(isset($_POST['module-Ajouter'])) {
                 $input['name'] = ucfirst(strtolower($_POST['module-Ajouter']));
+                $input['id_class'] = $_POST['class'];
 
                 if(!$module->first($input)) {
                     $module->insert($input);
