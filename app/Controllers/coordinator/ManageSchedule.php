@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controllers\coordinator;
 use App\Core\Controller;
 use App\Models\Filiere_;
@@ -32,8 +31,22 @@ class ManageSchedule {
 
         $data['modules_profs'] = array_merge($modules_profs,$module_rows);
 
+        $data['colors'] = [
+            '#02c2c7',
+            '#ff5722',
+            '#5bbd2a',
+            '#f0d001',
+            '#ff48a4',
+            '#9d60ff',
+            '#724E91',
+            '#1B2845',
+            '#0B5563',
+            '#183A37',
+            '#e95601',
+        ];
         $this->view('coordinator/manageSchedule',$data);
     }
+
 
 
 }

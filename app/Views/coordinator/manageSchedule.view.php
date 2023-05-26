@@ -45,10 +45,13 @@
   <div class="card card-deck bg-light mb-4">
     <ul class="modules-list list-unstyled d-flex gap-2 p-3 flex-wrap m-0">
         <?php
-        $i = 1; 
+        $i = 0; 
         foreach($modules_profs as $module) { ?>
           <li>
-            <div id="<?='module-'.$i++?>" draggable="true" ondragstart="dragStartHandler(event)" class="bg-green padding-5px-tb padding-15px-lr border-radius-5 text-white font-size16  xs-font-size13">
+            <div id="<?='module-'.$i?>" draggable="true" 
+                 ondragstart="dragStartHandler(event)" 
+                 style="background-color: <?=$colors[$i++]?>;"
+                 class="bg-green padding-5px-tb padding-15px-lr border-radius-5 text-white font-size16  xs-font-size13">
               <p class="lh-1 mb-1 mt-1 fw-bold text-center" ><?=$module->name?></p>
               <div class="text-center" style="font-size: 13px"><?= isset($module->fname) ? ucwords(strtolower($module->lname.' '.$module->fname)) : '?'?></div>
             </div>
@@ -67,10 +70,11 @@
               <th class="align-middle" style="width: calc(89% / 4);">08:00 - 10:00</th>
               <th class="align-middle" style="width: calc(89% / 4);">10:00 - 12:00</th>
               <th class="align-middle" style="width: calc(89% / 4);">14:00 - 16:00</th>
-              <th class="align-middle" style="width: calc(89% / 4);"  >16:00 - 18:00</th>
+              <th class="align-middle" style="width: calc(89% / 4);">16:00 - 18:00</th>
             </tr>
           </thead>
           <tbody>
+
             <tr style="height: 5rem">
               <th class="text-uppercase align-middle">Lundi</th>
               <td class="module-dropzone" ></td>
@@ -119,7 +123,7 @@
               <td class="module-dropzone" ></td>
             </tr>
 
-            </tbody>
+          </tbody>
         </table>
       </div>
     </div>
