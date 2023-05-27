@@ -35,6 +35,7 @@ class GererEmploi {
             ];
             $data['schedule_rows'] = $class->join($tables, $columns, $columnValue,"&& level = ". $_POST['level']);
 
+            if($data['schedule_rows']) $_SESSION['id_class'] = $data['schedule_rows'][0]->id_class;
         }
         
         $this->view('coordinator/gererEmploi',$data);

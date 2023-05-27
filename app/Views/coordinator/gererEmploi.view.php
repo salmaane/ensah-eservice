@@ -62,7 +62,7 @@
       <?php if (empty($schedule_rows)) { ?>
         <div class="card card-deck bg-light p-5 d-flex align-items-center flex-column gap-4">
           <h2 class="opacity-50">Il n'y a pas d'emploi du temps pour ce classe</h2>
-          <a href="<?= URL_ROOT . 'home/manageSchedule' ?>" class="btn btn-success text-decoration-none" style="width: fit-content;color: #fff;">Ajouter</a>
+          <a href="<?= URL_ROOT . 'home/addSchedule' ?>" class="btn btn-success text-decoration-none" style="width: fit-content;color: #fff;">Ajouter</a>
         </div>
       <?php } else { ?>
         <div class="card card-deck bg-light pt-3 mb-5 d-flex flex-column">
@@ -124,16 +124,37 @@
               </table>
             </div>
           </div>
-          <form class="mb-4 align-self-end me-4" method="post">
-            <button class="btn btn-warning">Modifier</button>
-          </form>
+          <div class="mb-4 align-self-end me-4"">
+            <button type=" button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Supprimer
+            </button>
+            <a class=" btn btn-warning" href="<?= URL_ROOT . "home/updateSchedule" ?>">Modifier</a>
+          </div>
         </div>
       <?php } ?>
     <?php } ?>
 
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Supprimer l'emploi du temps</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Confirmer la supression ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <a class=" btn btn-danger" href="<?= URL_ROOT . "home/deleteSchedule" ?>">Confirmer</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

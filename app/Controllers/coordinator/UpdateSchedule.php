@@ -1,37 +1,42 @@
 <?php
 
 namespace App\Controllers\coordinator;
+
 use App\Core\Controller;
+use App\Models\Class_;
 use App\Models\Filiere_;
 use App\Models\Module;
 use App\Models\Schedules;
 
-class ManageSchedule {
+class UpdateSchedule {
     use Controller;
 
-    public function index() {
+    public function index()
+    {   
         $data = [];
         $id_filiere = $_SESSION['id_filiere'];
         $level = $_SESSION['level'];
 
         $module = new Module();
         $filiere = new Filiere_();
+        $class = new Class_();
 
+        // get this class number modules from database
         $tables = ['module_filiere', 'class', 'prof'];
-        $columns = ['id_module','id_class','id_prof'];
+        $columns = ['id_module', 'id_class', 'id_prof'];
         $columnValue = [
             'column' => 'level',
-            'value' => $level, 
+            'value' => $level,
         ];
-        $modules_profs = $module->join($tables, $columns, $columnValue," and class.id_filiere = ". $id_filiere);
-        if(!$modules_profs) $modules_profs = [];
+        $modules_profs = $module->join($tables, $columns, $columnValue, " and class.id_filiere = " . $id_filiere);
+        if (!$modules_profs) $modules_profs = [];
 
-        $tables = ['module_filiere','module', 'class'];
+        $tables = ['module_filiere', 'module', 'class'];
         $columns = ['id_filiere', 'id_module', 'id_class'];
-        $module_rows = $filiere->join($tables, $columns, [], 'id_prof is null and class.id_filiere = '.$id_filiere );
-        if(!$module_rows) $module_rows = [];
+        $module_rows = $filiere->join($tables, $columns, [], 'id_prof is null and class.id_filiere = ' . $id_filiere);
+        if (!$module_rows) $module_rows = [];
 
-        $data['modules_profs'] = array_merge($modules_profs,$module_rows);
+        $data['modules_profs'] = array_merge($modules_profs, $module_rows);
 
         $data['colors'] = [
             '#02c2c7',
@@ -47,14 +52,22 @@ class ManageSchedule {
             '#e95601',
         ];
 
-        
+        // Get schedule rows from database
+        $tables = ['schedules'];
+        $columns = ['id_class'];
+        $columnValue = [
+            'column' => 'id_filiere',
+            'value' => $id_filiere
+        ];
+        $data['schedule_rows'] = $class->join($tables, $columns, $columnValue, "&& level = " . $level);
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // update the schedule
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $scheduleData = json_decode($_POST['jsonData']);
             $schedule = new Schedules();
-            foreach($scheduleData as $day => $value) {
+            $i = 0;
+            foreach ($scheduleData as $day => $value) {
                 $input = [
-                    'id_class' => $data['modules_profs'][0]->id_class,
                     'day_of_week' => $day,
                     'h8_10_module' => $value->{'08:00-10:00'}->{'module'},
                     'h8_10_prof' => $value->{'08:00-10:00'}->{'prof'},
@@ -66,18 +79,16 @@ class ManageSchedule {
                     'h4_6_prof' => $value->{'16:00-18:00'}->{'prof'}
                 ];
 
-                $schedule->insert($input);
-                header('Location: ./gererEmploi');
+
+                $schedule->update($data['schedule_rows'][$i++]->id_schedule, 'id_schedule',$input);
+                header('Refresh:0');
             }
         }
 
 
 
-        $this->view('coordinator/manageSchedule',$data);
+        $this->view('coordinator/updateSchedule', $data);
     }
 
 
-
 }
-
-?>

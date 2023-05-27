@@ -38,7 +38,9 @@ define('PATHS', [
     'home/consulterModule' => ['class' => 'App\Controllers\coordinator\ConsulterModule', 'method' => 'index'], 
     'home/consulterDescriptif' => ['class' => 'App\Controllers\coordinator\ConsulterDescriptif', 'method' => 'index'], 
     'home/gererEmploi' => ['class'=> 'App\Controllers\coordinator\GererEmploi', 'method' => 'index'],
-    'home/manageSchedule' => ['class'=> 'App\Controllers\coordinator\ManageSchedule', 'method' => 'index'],
+    'home/addSchedule' => ['class'=> 'App\Controllers\coordinator\AddSchedule', 'method' => 'index'],
+    'home/updateSchedule' => ['class'=> 'App\Controllers\coordinator\UpdateSchedule', 'method' => 'index'],
+    'home/deleteSchedule' => ['class'=> 'App\Controllers\coordinator\DeleteSchedule', 'method' => 'index'],
 
     'home/consulterModuleProf' => ['class' => 'App\Controllers\professeur\ConsulterModuleProf', 'method' => 'index'],
     

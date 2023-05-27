@@ -35,7 +35,7 @@ function deleteModule(event) {
     const module = document.getElementById(data);
     
     if(module.parentElement.tagName == 'TD') {
-      module.remove();
+      module.parentElement.innerHTML = '';
     }
 
   }
@@ -163,11 +163,12 @@ const scheduleData = {
   },
 }
 
-function getScheduleJSONData() {
+function getScheduleJSONData(event) {
 
   const tableCells = Array.from(document.querySelectorAll("td.module-dropzone"));
-
+  
   const modulesNames = tableCells.map(td => {
+    console.log(td);
     if(td.innerHTML == '') return '';
     return td.children[0].children[0].textContent;
   });
