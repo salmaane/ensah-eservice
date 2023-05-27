@@ -49,14 +49,14 @@
         foreach($modules_profs as $module) { ?>
             <div id="<?='module-'.$i.'-Cours'?>" draggable="true" 
                  ondragstart="dragStartHandler(event)" 
-                 style="background-color: <?=$colors[$i]?>;"
+                 style="background-color: <?=$colors[$i]?>;cursor:move;"
                  class="bg-green padding-5px-tb padding-15px-lr border-radius-5 text-white font-size16  xs-font-size13">
               <p class="module-name lh-1 mb-1 mt-1 fw-bold text-center" ><?=$module->name . ' - Cours'?></p>
               <div class="prof-name text-center" style="font-size: 13px"><?= isset($module->fname) ? ucwords(strtolower($module->lname.' '.$module->fname)) : '?'?></div>
             </div>
             <div id="<?='module-'.$i.'-TD/TP'?>" draggable="true" 
                  ondragstart="dragStartHandler(event)" 
-                 style="background-color: <?=$colors[$i++]?>;"
+                 style="background-color: <?=$colors[$i++]?>;cursor:move;"
                  class="bg-green padding-5px-tb padding-15px-lr border-radius-5 text-white font-size16  xs-font-size13">
               <p class="module-name lh-1 mb-1 mt-1 fw-bold text-center" ><?=$module->name . ' - TD/TP'?></p>
               <div class="prof-name text-center" style="font-size: 13px"><?= isset($module->fname) ? ucwords(strtolower($module->lname.' '.$module->fname)) : '?'?></div>
@@ -143,157 +143,12 @@
       </div>
     </div>
     <form class="m-auto mb-4" method="post">
+      <input hidden name="jsonData" value="" id="jsonData"/>
       <button class="btn btn-success" onclick="getScheduleJSONData()">Save</button>
     </form>
   </div>
   
 </main>
 <script src="<?=ASSETS_JS . 'manageSchedule.js'?>" ></script>
-<script>
-
-const shceduleData = {
-  lundi: {
-    '08:00-10:00' : {
-      prof: '',
-      module: '',
-    },
-    '10:00-12:00' : {
-      prof: '',
-      module: '',
-    },
-    '14:00-16:00' : {
-      prof: '',
-      module: '',
-    },
-    '16:00-18:00' : {
-      prof: '',
-      module: '',
-    }
-  },
-
-  mardi: {
-    '08:00-10:00' : {
-      prof: '',
-      module: '',
-    },
-    '10:00-12:00' : {
-      prof: '',
-      module: '',
-    },
-    '14:00-16:00' : {
-      prof: '',
-      module: '',
-    },
-    '16:00-18:00' : {
-      prof: '',
-      module: '',
-    }
-  },
-
-  mercredi: {
-    '08:00-10:00' : {
-      prof: '',
-      module: '',
-    },
-    '10:00-12:00' : {
-      prof: '',
-      module: '',
-    },
-    '14:00-16:00' : {
-      prof: '',
-      module: '',
-    },
-    '16:00-18:00' : {
-      prof: '',
-      module: '',
-    }
-  },
-
-  jeudi: {
-    '08:00-10:00' : {
-      prof: '',
-      module: '',
-    },
-    '10:00-12:00' : {
-      prof: '',
-      module: '',
-    },
-    '14:00-16:00' : {
-      prof: '',
-      module: '',
-    },
-    '16:00-18:00' : {
-      prof: '',
-      module: '',
-    }
-  },
-
-  vendredi: {
-    '08:00-10:00' : {
-      prof: '',
-      module: '',
-    },
-    '10:00-12:00' : {
-      prof: '',
-      module: '',
-    },
-    '14:00-16:00' : {
-      prof: '',
-      module: '',
-    },
-    '16:00-18:00' : {
-      prof: '',
-      module: '',
-    }
-  },
-
-  samedi: {
-    '08:00-10:00' : {
-      prof: '',
-      module: '',
-    },
-    '10:00-12:00' : {
-      prof: '',
-      module: '',
-    },
-    '14:00-16:00' : {
-      prof: '',
-      module: '',
-    },
-    '16:00-18:00' : {
-      prof: '',
-      module: '',
-    }
-  },
-}
-
-function getScheduleJSONData() {
-  const tableCells = Array.from(document.querySelectorAll("td.module-dropzone"));
-
-  const modulesNames = tableCells.map(td => {
-    if(td.innerHTML == '') return '';
-    return td.children[0].children[0].textContent;
-  });
-
-  const profsNames = tableCells.map(td => {
-    if(td.innerHTML == '') return '';
-    return td.children[0].children[1].textContent;
-  });
-
-  let i=0;
-  for(let day in shceduleData) {
-    let hours = shceduleData[day];
-
-    for(let hour in hours) {
-      hours[hour].module = modulesNames[i];
-      hours[hour].prof = profsNames[i];
-      i++;
-    }
-  }
-
-  <?php $_SESSION['scheduleData'] ?> = JSON.stringify(shceduleData);
-}
-
-</script>
 </body>
 </html>

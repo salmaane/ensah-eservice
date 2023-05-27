@@ -45,3 +45,149 @@ function deleteDragOver(event) {
 
     event.dataTransfer.dropEffect = "move";
 }
+
+
+const scheduleData = {
+  lundi: {
+    '08:00-10:00' : {
+      prof: '',
+      module: '',
+    },
+    '10:00-12:00' : {
+      prof: '',
+      module: '',
+    },
+    '14:00-16:00' : {
+      prof: '',
+      module: '',
+    },
+    '16:00-18:00' : {
+      prof: '',
+      module: '',
+    }
+  },
+
+  mardi: {
+    '08:00-10:00' : {
+      prof: '',
+      module: '',
+    },
+    '10:00-12:00' : {
+      prof: '',
+      module: '',
+    },
+    '14:00-16:00' : {
+      prof: '',
+      module: '',
+    },
+    '16:00-18:00' : {
+      prof: '',
+      module: '',
+    }
+  },
+
+  mercredi: {
+    '08:00-10:00' : {
+      prof: '',
+      module: '',
+    },
+    '10:00-12:00' : {
+      prof: '',
+      module: '',
+    },
+    '14:00-16:00' : {
+      prof: '',
+      module: '',
+    },
+    '16:00-18:00' : {
+      prof: '',
+      module: '',
+    }
+  },
+
+  jeudi: {
+    '08:00-10:00' : {
+      prof: '',
+      module: '',
+    },
+    '10:00-12:00' : {
+      prof: '',
+      module: '',
+    },
+    '14:00-16:00' : {
+      prof: '',
+      module: '',
+    },
+    '16:00-18:00' : {
+      prof: '',
+      module: '',
+    }
+  },
+
+  vendredi: {
+    '08:00-10:00' : {
+      prof: '',
+      module: '',
+    },
+    '10:00-12:00' : {
+      prof: '',
+      module: '',
+    },
+    '14:00-16:00' : {
+      prof: '',
+      module: '',
+    },
+    '16:00-18:00' : {
+      prof: '',
+      module: '',
+    }
+  },
+
+  samedi: {
+    '08:00-10:00' : {
+      prof: '',
+      module: '',
+    },
+    '10:00-12:00' : {
+      prof: '',
+      module: '',
+    },
+    '14:00-16:00' : {
+      prof: '',
+      module: '',
+    },
+    '16:00-18:00' : {
+      prof: '',
+      module: '',
+    }
+  },
+}
+
+function getScheduleJSONData() {
+
+  const tableCells = Array.from(document.querySelectorAll("td.module-dropzone"));
+
+  const modulesNames = tableCells.map(td => {
+    if(td.innerHTML == '') return '';
+    return td.children[0].children[0].textContent;
+  });
+
+  const profsNames = tableCells.map(td => {
+    if(td.innerHTML == '') return '';
+    return td.children[0].children[1].textContent;
+  });
+
+  let i=0;
+  for(let day in scheduleData) {
+    let hours = scheduleData[day];
+
+    for(let hour in hours) {
+      hours[hour].module = modulesNames[i];
+      hours[hour].prof = profsNames[i];
+      i++;
+    }
+  }
+
+  const input = document.getElementById('jsonData');
+  input.value = JSON.stringify(scheduleData);
+}

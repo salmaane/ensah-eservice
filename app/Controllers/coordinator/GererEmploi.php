@@ -34,7 +34,7 @@ class GererEmploi {
                  'value'=> $data['filiere_infos']->id_filiere
             ];
             $data['schedule_rows'] = $class->join($tables, $columns, $columnValue,"&& level = ". $_POST['level']);
-            show($data['schedule_rows']);
+
         }
         
         $this->view('coordinator/gererEmploi',$data);
