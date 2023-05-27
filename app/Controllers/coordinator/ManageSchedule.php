@@ -44,6 +44,13 @@ class ManageSchedule {
             '#183A37',
             '#e95601',
         ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(isset($_SESSION['scheduleData'])) {
+                show($_SESSION['scheduleData']);
+            }
+        }
+
         $this->view('coordinator/manageSchedule',$data);
     }
 
