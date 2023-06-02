@@ -21,9 +21,10 @@ class Login {
             
             if($user_data) {
                 if($user_data->password == $_POST['password']) {
-                    $_SESSION['user_data'] = $user_data; 
-                                    
+                    $_SESSION['user_data'] = $user_data;
+
                     $this->setVisitorsCount();
+                    $this->getInfos();
                     
                     redirect('home');
                 }
@@ -52,6 +53,30 @@ class Login {
         }
     }
 
+    public function getInfos()
+    {
+        $account = new Accounts();
+        switch ($_SESSION['user_data']->type) {
+            case 'administrateur':
+                $tables = ['admin'];
+                break;
+
+            case 'coordinator':
+                $tables = ['coordinator'];
+                break;
+
+            case 'chefDepartement':
+                $tables = ['chef_dep'];
+                break;
+
+            case 'professeur':
+                $tables = ['prof'];
+                break;
+        }
+        $joinColumns = ['id_account'];
+        $columnValue = ['column' => 'id_account', 'value' => $_SESSION['user_data']->id_account];
+        $_SESSION['user_data'] = $account->join($tables, $joinColumns, $columnValue)[0];
+    }
 }
 
 

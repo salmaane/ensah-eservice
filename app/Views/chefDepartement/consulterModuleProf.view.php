@@ -15,7 +15,7 @@
     <div class="profile">
       <img src="<?= ASSETS_IMAGES ?>Profile-Icon.png" alt="" class="profile-icon" />
       <div>
-        <h5 class="m-0">Mohamed Haitham</h5>
+        <h5 class="m-0"><?= ucwords($_SESSION['user_data']->lname . ' ' . $_SESSION['user_data']->fname) ?></h5>
         <p class="acc-type m-0"><?= parseAccType($_SESSION['user_data']->type) ?></p>
       </div>
     </div>
@@ -42,38 +42,38 @@
 
   <main>
     <div class="me-2 card card-deck p-5 ">
-        <?php if(empty($departement)) {?>
-            <p class="alert alert-warning">Aucun departement est affecté</p>
+      <?php if (empty($departement)) { ?>
+        <p class="alert alert-warning">Aucun departement est affecté</p>
+      <?php } else { ?>
+        <h1 class="mb-5">Les modules du departement <?= $departement->name ?></h1>
+
+        <?php if (!empty($modules)) { ?>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th class="col-1 text-center">#</th>
+                <th scope="col" class="col-3 text-center">Nom du Module</th>
+                <th scope="col" class="col-3 text-center">Professeur</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $i = 1;
+              foreach ($modules as $row) { ?>
+                <tr id="module_row">
+                  <td class="text-center"><?= $i++ ?></td>
+                  <td class="text-center"><?= $row->name ?></td>
+                  <td class="text-center"><?= $row->lname . ' ' . $row->fname ?></td>
+                </tr>
+              <?php } ?>
+
+            </tbody>
+          </table>
         <?php } else { ?>
-            <h1 class="mb-5">Les modules du departement <?=$departement->name?></h1>
-
-            <?php if(!empty($modules)) { ?>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th class="col-1 text-center">#</th>
-                            <th scope="col" class="col-3 text-center">Nom du Module</th>
-                            <th scope="col" class="col-3 text-center">Professeur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i=1;
-                         foreach($modules as $row) {?>
-                            <tr id="module_row" >
-                                <td class="text-center"><?=$i++?></td>
-                                <td class="text-center"><?=$row->name?></td>
-                                <td class="text-center"><?=$row->lname . ' ' . $row->fname?></td>
-                            </tr>
-                        <?php } ?>
-
-                    </tbody>
-                </table>
-             <?php } else { ?>
-                <p class="alert alert-warning">Aucun module dans ce departement</p>
-             <?php } ?>
-
+          <p class="alert alert-warning">Aucun module dans ce departement</p>
         <?php } ?>
+
+      <?php } ?>
     </div>
   </main>
 

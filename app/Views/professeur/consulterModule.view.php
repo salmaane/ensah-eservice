@@ -15,7 +15,7 @@
     <div class="profile">
       <img src="<?= ASSETS_IMAGES ?>Profile-Icon.png" alt="" class="profile-icon" />
       <div>
-        <h5 class="m-0">Mohamed Haitham</h5>
+        <h5 class="m-0"><?= ucwords($_SESSION['user_data']->lname . ' ' . $_SESSION['user_data']->fname) ?></h5>
         <p class="acc-type m-0"><?= parseAccType($_SESSION['user_data']->type) ?></p>
       </div>
     </div>
@@ -41,28 +41,28 @@
   </header>
 
   <?php
-    $nbr_module = 'Vous enseignez ';
-    $nbr_module .= count($modules) == 0 ? 'aucun module' : (count($modules) == 1 ? 'un module' : count($modules) .' modules'); 
+  $nbr_module = 'Vous enseignez ';
+  $nbr_module .= count($modules) == 0 ? 'aucun module' : (count($modules) == 1 ? 'un module' : count($modules) . ' modules');
   ?>
 
   <main>
     <div class="me-2 card card-deck p-5 ">
       <h1 class="mb-5"><?= $nbr_module ?></h1>
-      <?php if(!empty($modules)) { ?>
+      <?php if (!empty($modules)) { ?>
         <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col" class="col-3 text-center">Nom du Module</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($modules as $row) {?>
-                    <tr id="module_row" >
-                        <td class="text-center"><?=$row->name?></td>
-                    </tr>
-                <?php } ?>
+          <thead>
+            <tr>
+              <th scope="col" class="col-3 text-center">Nom du Module</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($modules as $row) { ?>
+              <tr id="module_row">
+                <td class="text-center"><?= $row->name ?></td>
+              </tr>
+            <?php } ?>
 
-            </tbody>
+          </tbody>
         </table>
       <?php } ?>
     </div>

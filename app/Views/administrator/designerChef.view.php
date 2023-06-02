@@ -15,7 +15,7 @@
     <div class="profile">
       <img src="<?= ASSETS_IMAGES ?>Profile-Icon.png" alt="" class="profile-icon" />
       <div>
-        <h5 class="m-0">Mohamed Haitham</h5>
+        <h5 class="m-0"><?= ucwords($_SESSION['user_data']->lname . ' ' . $_SESSION['user_data']->fname) ?></h5>
         <p class="acc-type m-0"><?= parseAccType($_SESSION['user_data']->type) ?></p>
       </div>
     </div>
@@ -65,13 +65,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="chefs" class="form-label">Choisir chef du département</label>
-            <select name="id_chef" class="form-select" id="chef">
-                <option selected disabled>Ouvrir ce menu pour choisir</option>
-                <?php foreach ($chefs as $chef) { ?>
-                <option value="<?= $chef->id_chef ?>"><?= ucfirst(strtolower($chef->lname .' '. $chef->fname)) ?></option>
-                <?php } ?>
-           </select>
+          <label for="chefs" class="form-label">Choisir chef du département</label>
+          <select name="id_chef" class="form-select" id="chef">
+            <option selected disabled>Ouvrir ce menu pour choisir</option>
+            <?php foreach ($chefs as $chef) { ?>
+              <option value="<?= $chef->id_chef ?>"><?= ucfirst(strtolower($chef->lname . ' ' . $chef->fname)) ?></option>
+            <?php } ?>
+          </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Desginer chef du département</button>

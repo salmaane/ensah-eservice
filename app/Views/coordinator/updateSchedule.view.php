@@ -16,7 +16,7 @@
         <div class="profile">
             <img src="<?= ASSETS_IMAGES ?>Profile-Icon.png" alt="" class="profile-icon" />
             <div>
-                <h5 class="m-0">Mohamed Haitham</h5>
+                <h5 class="m-0"><?= ucwords($_SESSION['user_data']->lname . ' ' . $_SESSION['user_data']->fname) ?></h5>
                 <p class="acc-type m-0"><?= parseAccType($_SESSION['user_data']->type) ?></p>
             </div>
         </div>
