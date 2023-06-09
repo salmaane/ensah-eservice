@@ -124,7 +124,7 @@
               </table>
             </div>
           </div>
-          <div class="mb-4 align-self-end me-4"">
+          <div class="mb-4 align-self-end me-4">
             <button type=" button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Supprimer
             </button>

@@ -27,18 +27,18 @@ trait Model {
         return $this->query($query);
     }
 
-    public function where($data, $notData = []) {
+    public function where($data, $notData = [], $condition = '&&') {
         $keys = array_keys($data);
         $notkeys = array_keys($notData);
 
         $query = "select * from $this->table where ";
         foreach($keys as $cond) {
-            $query .= $cond . ' = :' . $cond . ' && ';
+            $query .= $cond . ' = :' . $cond . " $condition ";
         }
         foreach($notkeys as $notCond) {
-            $query .= $notCond . ' != :' . $notCond . ' && ';
+            $query .= $notCond . ' != :' . $notCond . " $condition ";
         }
-        $query = trim($query,' && ');
+        $query = trim($query, " $condition "        );
         $query .= " order by $this->orderColumn $this->orderType limit $this->limit offset $this->offset;";
 
         $data = array_merge($data,$notData);
