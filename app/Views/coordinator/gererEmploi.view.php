@@ -54,10 +54,10 @@
             <?php } ?>
           </select>
         </div>
-        <button class="btn btn-warning align-self-end" type="submit" onclick="chooseClass(event)" >Choisir</button>
+        <button class="btn btn-warning align-self-end" type="submit">Choisir</button>
       </form>
     </div>
-
+    <p class="alert alert-success overflow-hidden" id="deleteMessage" style="display: none;">Emploi du temps supprimé avec succès</p>
     <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
       <?php if (empty($schedule_rows)) { ?>
         <div class="card card-deck bg-light p-5 d-flex align-items-center flex-column gap-4">
@@ -65,7 +65,7 @@
           <a href="<?= URL_ROOT . 'home/addSchedule' ?>" class="btn btn-success text-decoration-none" style="width: fit-content;color: #fff;">Ajouter</a>
         </div>
       <?php } else { ?>
-        <div class="card card-deck bg-light pt-3 mb-5 d-flex flex-column">
+        <div class="card card-deck bg-light pt-3 mb-5 d-flex flex-column" id="schedule">
           <div class="container mb-3">
             <div class="table-responsive">
               <table class="table table-bordered text-center">
@@ -126,7 +126,7 @@
           </div>
           <div class="mb-4 align-self-end me-4">
             <button type=" button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Supprimer
+              Supprimer
             </button>
             <a class=" btn btn-warning" href="<?= URL_ROOT . "home/updateSchedule" ?>">Modifier</a>
           </div>
@@ -139,22 +139,22 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Supprimer l'emploi du temps</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
           </div>
           <div class="modal-body">
             Confirmer la supression ?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-            <a class=" btn btn-danger" href="<?= URL_ROOT . "home/deleteSchedule" ?>">Confirmer</a>
+            <button class=" btn btn-danger" onclick="deleteSchedule(event)">Confirmer</button>
           </div>
         </div>
       </div>
     </div>
 
   </main>
-  
-  <script src="<?=ASSETS_JS . "gererEmploi.js"?>" ></script>
+
+  <script src="<?= ASSETS_JS . "gererEmploi.js" ?>"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
