@@ -47,27 +47,59 @@ class AddSchedule {
             '#e95601',
         ];
 
-        
+        $data['full_hours'] = [];
+        $full = 0;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $scheduleData = json_decode($_POST['jsonData']);
             $schedule = new Schedules();
-            foreach($scheduleData as $day => $value) {
-                $input = [
-                    'id_class' => $data['modules_profs'][0]->id_class,
-                    'day_of_week' => $day,
-                    'h8_10_module' => $value->{'08:00-10:00'}->{'module'},
-                    'h8_10_prof' => $value->{'08:00-10:00'}->{'prof'},
-                    'h10_12_module' => $value->{'10:00-12:00'}->{'module'},
-                    'h10_12_prof' => $value->{'10:00-12:00'}->{'prof'},
-                    'h2_4_module' => $value->{'14:00-16:00'}->{'module'},
-                    'h2_4_prof'  => $value->{'14:00-16:00'}->{'prof'},
-                    'h4_6_module' => $value->{'16:00-18:00'}->{'module'},
-                    'h4_6_prof' => $value->{'16:00-18:00'}->{'prof'}
-                ];
+            foreach($scheduleData as $day => $value) {  
 
-                $schedule->insert($input);
-                header('Location: ./gererEmploi');
+                $check_hour1['day_of_week'] = $day;
+                $check_hour1['h8_10_prof'] = $value->{'08:00-10:00'}->{'prof'};
+                if($schedule->first($check_hour1) && $check_hour1['h8_10_prof'] != '') {
+                    array_push($data['full_hours'], ['name' => $check_hour1['h8_10_prof'], 'hour' => '8h à 10h']);
+                    $full = 1;
+                }
+
+                $check_hour2['day_of_week'] = $day;
+                $check_hour2['h10_12_prof'] = $value->{'10:00-12:00'}->{'prof'};
+                if($schedule->first($check_hour2) &&  $check_hour2['h10_12_prof'] != '') {
+                    array_push($data['full_hours'], ['name' => $check_hour2['h10_12_prof'], 'hour' => '10h à 12h']);
+                    $full = 1;
+                }
+
+                $check_hour3['day_of_week'] = $day;
+                $check_hour3['h2_4_prof'] = $value->{'14:00-16:00'}->{'prof'};
+                if($schedule->first($check_hour3) && $check_hour3['h2_4_prof'] != '') {
+                    array_push($data['full_hours'], ['name' => $check_hour3['h2_4_prof'], 'hour' => '14h à 16h']);
+                    $full = 1;
+                }
+
+                $check_hour4['day_of_week'] = $day;
+                $check_hour4['h4_6_prof'] = $value->{'16:00-18:00'}->{'prof'};
+                if($schedule->first($check_hour4) && $check_hour4['h4_6_prof'] != '') {
+                    array_push($data['full_hours'], ['name' => $check_hour4['h4_6_prof'], 'hour' => '16h à 18h']);
+                    $full = 1;
+                }
+            }
+            if(!$full) {
+                foreach($scheduleData as $day => $value) {
+                    $input = [
+                        'id_class' => $data['modules_profs'][0]->id_class,
+                        'day_of_week' => $day,
+                        'h8_10_module' => $value->{'08:00-10:00'}->{'module'},
+                        'h8_10_prof' => $value->{'08:00-10:00'}->{'prof'},
+                        'h10_12_module' => $value->{'10:00-12:00'}->{'module'},
+                        'h10_12_prof' => $value->{'10:00-12:00'}->{'prof'},
+                        'h2_4_module' => $value->{'14:00-16:00'}->{'module'},
+                        'h2_4_prof'  => $value->{'14:00-16:00'}->{'prof'},
+                        'h4_6_module' => $value->{'16:00-18:00'}->{'module'},
+                        'h4_6_prof' => $value->{'16:00-18:00'}->{'prof'}
+                    ];
+                    $schedule->insert($input);
+                    header('Location: ./gererEmploi');
+                }
             }
         }
 

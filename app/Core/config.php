@@ -43,9 +43,10 @@ define('PATHS', [
     'home/deleteSchedule' => ['class'=> 'App\Controllers\coordinator\DeleteSchedule', 'method' => 'index'],
 
     'home/consulterModuleProf' => ['class' => 'App\Controllers\professeur\ConsulterModuleProf', 'method' => 'index'],
-    'home/consulterEmploi' => ['class' => 'App\Controllers\professeur\ConsulterEmploi', 'method' => 'index'],
+    'home/consulterEmploi' => ['class' => 'App\Controllers\professeur\ConsulterEmploiChef', 'method' => 'index'],
     
     'home/consulterModuleChef' => ['class' => 'App\Controllers\chefDepartement\ConsulterModuleProf', 'method' => 'index'],
+    'home/consulterEmploi' => ['class' => 'App\Controllers\chefDepartement\ConsulterEmploiChef', 'method' => 'index'],
 ]);
 
 //Account types
@@ -63,7 +64,7 @@ define('ACC_TYPES',
             'Consulter les modules' => 'home/consulterModuleProf',
         ],
         'chefDepartement' =>  [
-            'Consulter emploi du temps'=>'',
+            'Consulter emploi du temps'=>'home/consulterEmploi',
             'consulter modules et professeurs du departement'=>'home/consulterModuleChef',
         ],
         'coordinator' => [

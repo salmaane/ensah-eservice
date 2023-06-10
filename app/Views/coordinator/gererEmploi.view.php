@@ -45,7 +45,7 @@
     <div class="me-2 card card-deck p-5 bg-light mb-5">
       <h1 class="mb-3">Gérer Emploi du temps</h1>
 
-      <form method="post" class="d-flex flex-column">
+      <form method="post" class="d-flex flex-column" id="chooseClassFrom">
         <div class="mb-3">
           <label class="form-label" for="acc-type">Choisir le Niveau</label>
           <select name="level" class="form-select" id="acc-type" required>
@@ -54,7 +54,7 @@
             <?php } ?>
           </select>
         </div>
-        <button class="btn btn-warning align-self-end" type="submit">Choisir</button>
+        <button class="btn btn-warning align-self-end" type="submit" onclick="chooseClass(event)" >Choisir</button>
       </form>
     </div>
 
@@ -153,7 +153,8 @@
     </div>
 
   </main>
-
+  
+  <script src="<?=ASSETS_JS . "gererEmploi.js"?>" ></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

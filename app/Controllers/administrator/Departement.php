@@ -12,7 +12,7 @@ class Departement {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dep = new Dep();
 
-            $inputs['name'] = strtoupper($_POST['name']);
+            $inputs['name'] = strtolower($_POST['name']);
             
             $dep_row = $dep->first($inputs);
             

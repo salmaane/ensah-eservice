@@ -64,6 +64,15 @@
     </div>
 
     <div class="card card-deck bg-light pt-3 mb-5">
+
+      <?php if (!empty($full_hours)) { ?>
+        <div class="ms-2 me-2 alert alert-danger">
+          <?php foreach ($full_hours as $prof_hour) { ?>
+            <p class="m-0">Le professeur <strong><?= $prof_hour['name'] ?></strong> enseigne déja un module de <strong><?= $prof_hour['hour'] ?></strong></p>
+          <?php } ?>
+        </div>
+      <?php } ?>
+
       <div class="container mb-3">
         <div class="table-responsive">
           <table class="table table-bordered text-center">

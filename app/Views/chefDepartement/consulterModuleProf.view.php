@@ -45,7 +45,7 @@
       <?php if (empty($departement)) { ?>
         <p class="alert alert-warning">Aucun departement est affecté</p>
       <?php } else { ?>
-        <h1 class="mb-5">Les modules du departement <?= $departement->name ?></h1>
+        <h1 class="mb-5">Les modules du departement <?= ucwords($departement->name) ?></h1>
 
         <?php if (!empty($modules)) { ?>
           <table class="table table-striped table-hover">
