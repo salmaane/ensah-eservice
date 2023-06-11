@@ -73,7 +73,7 @@
 
         <div class="mb-3 form-group">
           <label for="descriptif" class="form-label">Descriptif du filiere</label>
-          <textarea name="descriptif" class="form-control" id="descriptif" rows="3"></textarea>
+          <textarea name="descriptif" class="form-control" id="descriptif" rows="3" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Ajouter</button>

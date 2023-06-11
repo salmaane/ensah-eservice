@@ -43,7 +43,7 @@ define('PATHS', [
     'home/deleteSchedule' => ['class'=> 'App\Controllers\coordinator\DeleteSchedule', 'method' => 'index'],
 
     'home/consulterModuleProf' => ['class' => 'App\Controllers\professeur\ConsulterModuleProf', 'method' => 'index'],
-    'home/consulterEmploi' => ['class' => 'App\Controllers\professeur\ConsulterEmploiChef', 'method' => 'index'],
+    'home/consulterEmploiProf' => ['class' => 'App\Controllers\professeur\ConsulterEmploi', 'method' => 'index'],
     
     'home/consulterModuleChef' => ['class' => 'App\Controllers\chefDepartement\ConsulterModuleProf', 'method' => 'index'],
     'home/consulterEmploi' => ['class' => 'App\Controllers\chefDepartement\ConsulterEmploiChef', 'method' => 'index'],
@@ -60,7 +60,7 @@ define('ACC_TYPES',
             'Designer chef departement'  => 'home/chef_dep',
         ],
         'professeur' => [
-            'Consulter emploi du temps' => 'home/consulterEmploi',
+            'Consulter emploi du temps' => 'home/consulterEmploiProf',
             'Consulter les modules' => 'home/consulterModuleProf',
         ],
         'chefDepartement' =>  [

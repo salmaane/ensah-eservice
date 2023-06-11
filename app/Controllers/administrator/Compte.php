@@ -17,7 +17,7 @@ class Compte {
             
             if(!$user_data) {
 
-                $input['password'] =     $_POST['password'];
+                $input['password'] =     password_hash($_POST['password'],PASSWORD_BCRYPT);
                 $input['type'] =         $_POST['acc-type'];
                 $acc_input['fname'] =    $_POST['fname'];
                 $acc_input['lname'] =    $_POST['lname'];

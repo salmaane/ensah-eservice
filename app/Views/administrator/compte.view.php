@@ -80,9 +80,10 @@
 
         <div class="mb-3">
           <label for="email" class="form-label">Adresse email</label>
-          <input name="email" type="email" class="form-control" id="email" required autocomplete="off">
+          <input name="email" type="email" class="form-control" id="email" required autocomplete="off" pattern=".+@uae\.ac\.ma">
+          <p id="emailError" class="text-danger m-0" style="display: none;">Veuillez respectez la forme du email suivante: .....@uae.ac.ma</p>
         </div>
-
+        
         <div class="mb-3">
           <label for="password" class="form-label">Mot de passe</label>
           <input name="password" type="password" class="form-control" id="password" required>
@@ -92,6 +93,6 @@
       </form>
     </div>
   </main>
+<script src="<?=ASSETS_JS?>compte.js"></script>
 </body>
-
 </html>

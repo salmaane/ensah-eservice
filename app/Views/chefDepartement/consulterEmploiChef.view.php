@@ -50,13 +50,13 @@
                     <label class="form-label" for="acc-type">Choisir la filiere</label>
                     <select name="filiere" class="form-select mb-3" id="acc-type" required>
                         <?php foreach ($filieres as $filiere) { ?>
-                            <option value="<?= $filiere->id_filiere ?>" <?= $_POST['filiere'] == $filiere->id_filiere ? 'selected' : null ?>><?= $filiere->name ?></option>
+                            <option value="<?= $filiere->id_filiere ?>" <?= isset($_POST['filiere']) && $_POST['filiere'] == $filiere->id_filiere ? 'selected' : null ?>><?= $filiere->name ?></option>
                         <?php } ?>
                     </select>
                     <label class="form-label" for="acc-type">Choisir le Niveau</label>
                     <select name="level" class="form-select" id="acc-type" required>
                         <?php for ($i = 1; $i < 4; $i++) { ?>
-                            <option value="<?= $i ?>" <?= $_POST['level'] == $i ? 'selected' : null ?>><?= 'Classe ' . $i ?></option>
+                            <option value="<?= $i ?>" <?= isset($_POST['level']) && $_POST['level'] == $i ? 'selected' : null ?>><?= 'Classe ' . $i ?></option>
                         <?php } ?>
                     </select>
                 </div>

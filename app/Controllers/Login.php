@@ -20,7 +20,7 @@ class Login {
             $user_data = $account->first($input);
             
             if($user_data) {
-                if($user_data->password == $_POST['password']) {
+                if(password_verify($_POST['password'], $user_data->password)) {
                     $_SESSION['user_data'] = $user_data;
 
                     $this->setVisitorsCount();
