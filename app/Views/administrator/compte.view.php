@@ -20,10 +20,18 @@
       </div>
     </div>
     <div class="tache">
-      <a href="<?= URL_ROOT ?>home">Acceuil</a>
+
+
+      <a href="<?= URL_ROOT ?>home">
+        <img alt="" src="<?= ASSETS_ICONS ?>acceuil.svg" class="book-icon" />
+        Acceuil
+      </a>
 
       <?php foreach (ACC_TYPES[$_SESSION['user_data']->type] as $acc_type => $link) { ?>
-        <a href="<?= URL_ROOT . $link ?>"><?= $acc_type ?></a>
+        <a href="<?= URL_ROOT . $link ?>">
+          <img alt="" src="<?= ASSETS_ICONS . ICONS_NAMES[$_SESSION['user_data']->type][$acc_type] ?>" class="book-icon" />
+          <?= $acc_type ?>
+        </a>
       <?php } ?>
 
     </div>
@@ -83,7 +91,7 @@
           <input name="email" type="email" class="form-control" id="email" required autocomplete="off" pattern=".+@uae\.ac\.ma">
           <p id="emailError" class="text-danger m-0" style="display: none;">Veuillez respectez la forme du email suivante: .....@uae.ac.ma</p>
         </div>
-        
+
         <div class="mb-3">
           <label for="password" class="form-label">Mot de passe</label>
           <input name="password" type="password" class="form-control" id="password" required>
@@ -93,6 +101,7 @@
       </form>
     </div>
   </main>
-<script src="<?=ASSETS_JS?>compte.js"></script>
+  <script src="<?= ASSETS_JS ?>compte.js"></script>
 </body>
+
 </html>

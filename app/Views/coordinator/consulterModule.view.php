@@ -21,9 +21,17 @@
         </div>
         <div class="tache">
 
-            <a href="<?= URL_ROOT ?>home">Acceuil</a>
+
+            <a href="<?= URL_ROOT ?>home">
+                <img alt="" src="<?= ASSETS_ICONS ?>acceuil.svg" class="book-icon" />
+                Acceuil
+            </a>
+
             <?php foreach (ACC_TYPES[$_SESSION['user_data']->type] as $acc_type => $link) { ?>
-                <a href="<?= URL_ROOT . $link ?>"><?= $acc_type ?></a>
+                <a href="<?= URL_ROOT . $link ?>">
+                    <img alt="" src="<?= ASSETS_ICONS . ICONS_NAMES[$_SESSION['user_data']->type][$acc_type] ?>" class="book-icon" />
+                    <?= $acc_type ?>
+                </a>
             <?php } ?>
 
         </div>
@@ -162,7 +170,7 @@
                                     <td class="text-center"><?= $row->name ?></td>
                                     <td class="d-flex justify-content-center">
                                         <div class="d-flex justify-content-between" style="width: 65%;">
-                                            <?= isset($row->fname) ? $row->lname . ' ' . $row->fname : 'Non Affecté' ?>
+                                            <?= isset($row->fname) ? ucwords($row->lname . ' ' . $row->fname) : 'Non Affecté' ?>
                                             <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#affecterModal" data-bs-whatever="Affecter" data-module_name="<?= $row->name ?>" data-id_module="<?= $row->id_module ?>" onclick="setModuleId3(event)">Affecter</button>
                                         </div>
                                     </td>

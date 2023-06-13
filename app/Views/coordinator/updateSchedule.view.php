@@ -22,9 +22,17 @@
         </div>
         <div class="tache">
 
-            <a href="<?= URL_ROOT ?>home">Acceuil</a>
+
+            <a href="<?= URL_ROOT ?>home">
+                <img alt="" src="<?= ASSETS_ICONS ?>acceuil.svg" class="book-icon" />
+                Acceuil
+            </a>
+
             <?php foreach (ACC_TYPES[$_SESSION['user_data']->type] as $acc_type => $link) { ?>
-                <a href="<?= URL_ROOT . $link ?>"><?= $acc_type ?></a>
+                <a href="<?= URL_ROOT . $link ?>">
+                    <img alt="" src="<?= ASSETS_ICONS . ICONS_NAMES[$_SESSION['user_data']->type][$acc_type] ?>" class="book-icon" />
+                    <?= $acc_type ?>
+                </a>
             <?php } ?>
 
         </div>
@@ -59,8 +67,11 @@
             </div>
         </div>
 
-        <div ondrop="deleteModule(event)" ondragover="deleteDragOver(event)" class="delete-module card card-deck bg-light p-2 d-flex align-items-center mb-3">
-            <h2 class="opacity-75 text-danger">glisser pour supprimer module</h2>
+        <div ondrop="deleteModule(event)" ondragover="deleteDragOver(event)" class="delete-module card card-deck bg-light p-2 d-flex align-items-center mb-3 border-danger">
+            <h2 class="opacity-75 text-danger">
+                <img alt="" src="<?= ASSETS_ICONS ?>delete.svg" style="opacity: 0.7;width:30px; display:inline; margin-right:5px;filter: invert(13%) sepia(100%) saturate(7290%) hue-rotate(358deg) brightness(102%) contrast(104%);" />
+                glisser pour supprimer module
+            </h2>
         </div>
 
         <div class="card card-deck bg-light pt-3 mb-5">

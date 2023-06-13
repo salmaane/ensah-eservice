@@ -21,42 +21,65 @@
     </div>
     <div class="tache">
 
-      <a href="<?= URL_ROOT ?>home">Acceuil</a>
+
+      <a href="<?= URL_ROOT ?>home">
+        <img alt="" src="<?= ASSETS_ICONS ?>acceuil.svg" class="book-icon" />
+        Acceuil
+      </a>
+
       <?php foreach (ACC_TYPES[$_SESSION['user_data']->type] as $acc_type => $link) { ?>
-        <a href="<?= URL_ROOT . $link ?>"><?= $acc_type ?></a>
+        <a href="<?= URL_ROOT . $link ?>">
+          <img alt="" src="<?= ASSETS_ICONS . ICONS_NAMES[$_SESSION['user_data']->type][$acc_type] ?>" class="book-icon" />
+          <?= $acc_type ?>
+        </a>
       <?php } ?>
 
     </div>
   </aside>
 
   <header class="top-navbar d-flex justify-content-between z-3 me-1">
-    <form class="d-flex justify-content-between">
-      <input type="search" placeholder="Recherche par mot clé" class="search-input" />
-      <button class="search-button"><img src="<?= ASSETS_ICONS ?>search.svg" alt="" class="search-icon" /></button>
-    </form>
-    <a class="logout" href="<?= URL_ROOT ?>logout">
-      <p class="logout-p m-0">LogOut</p>
-      <button class="logout-button m-0"><img src="<?= ASSETS_ICONS ?>logoutIcon.svg" alt="" class="logout-icon" /></button>
-    </a>
+    <div style="color:#3F52E3;" class="d-flex gap-3 flex-row align-items-center">
+      <img alt="" src="<?= ASSETS_IMAGES ?>logo-ensah.png" style="width:40px;" />
+      <h2 class="m-0" style="font-family: 'Righteous', cursive;">ENSAH Gestion</h2>
+    </div>
+    <div class="d-flex gap-5 align-items-center">
+      <form class="d-flex justify-content-between">
+        <input type="search" placeholder="Recherche par mot clé" class="search-input" />
+        <button class="search-button"><img src="<?= ASSETS_ICONS ?>search.svg" alt="" class="search-icon" /></button>
+      </form>
+      <a class="logout" href="<?= URL_ROOT ?>logout">
+        <p class="logout-p m-0">Se Déconnecter</p>
+        <button class="logout-button m-0"><img src="<?= ASSETS_ICONS ?>logoutIcon.svg" alt="" class="logout-icon" /></button>
+      </a>
+    </div>
   </header>
 
   <main>
 
     <div class="me-2 card-deck p-4 card me-1">
-      <h1 class="mt-1 text-center">Statistiques de l'école</h1>
+      <h1 class="mt-1 text-center">
+        <img alt="" src="<?= ASSETS_ICONS ?>statistique.png" style="width: 30px;display: inline;margin-right: 5px;margin-bottom:5px;" />
+        Statistiques de l'école
+      </h1>
       <div class="col p-5 gap-3">
         <div class="row mb-3 gap-3">
 
           <div class="card col text-white" style="background-color: #F9C80E;">
-            <div class="card-body d-flex align-items-center gap-5 justify-content-between">
-              <h3 class="card-title m-0">Nombre de départements</h3>
+            <div class="card-body d-flex align-items-center gap-2 justify-content-between">
+              <h3 class="card-title m-0" style="white-space: nowrap;">
+                <img alt="" src="<?= ASSETS_ICONS ?>departement.svg" class="book-icon" style="display: inline;margin-right: 5px;margin-bottom:5px;" />
+                Nombre de départements
+              </h3>
               <h2 class="card-text"><?= $dep_count->count ?></h2>
             </div>
           </div>
 
           <div class="card col text-white" style="background-color: #F86624;">
             <div class="card-body d-flex align-items-center gap-5 justify-content-between">
-              <h3 class="card-title m-0">Nombre de filières</h3>
+              <h3 class="card-title m-0" style="white-space: nowrap;">
+                <img alt="" src="<?= ASSETS_ICONS ?>filiere.png" class="book-icon" style="display: inline;margin-right: 5px;margin-bottom:5px;" />
+                Nombre de filières
+              </h3>
               <h2 class="card-text"><?= $filiere_count->count ?></h2>
             </div>
           </div>
@@ -67,14 +90,20 @@
 
           <div class="card col text-white" style="background-color: #EA3546;">
             <div class="card-body d-flex align-items-center gap-5 justify-content-between">
-              <h3 class="card-title m-0">Nombre de professeurs</h3>
+              <h3 class="card-title m-0" style="white-space: nowrap;">
+                <img alt="" src="<?= ASSETS_ICONS ?>professor.png" class="book-icon" style="display: inline;margin-right: 5px;margin-bottom:5px;" />
+                Nombre de professeurs
+              </h3>
               <h2 class="card-text"><?= $profs_count->count ?></h2>
             </div>
           </div>
 
           <div class="card col text-white" style="background-color: #662E9B;">
             <div class="card-body d-flex align-items-center gap-5 justify-content-between">
-              <h3 class="card-title m-0">Nombre de départements</h3>
+              <h3 class="card-title m-0" style="white-space: nowrap;">
+                <img alt="" src="<?= ASSETS_ICONS ?>departement.svg" class="book-icon" style="display: inline;margin-right: 5px;margin-bottom:5px;" />
+                Nombre de départements
+              </h3>
               <h2 class="card-text"><?= $dep_count->count ?></h2>
             </div>
           </div>
@@ -84,7 +113,10 @@
       </div>
 
       <div class="m-3 m-auto" style="width: 550px;">
-        <div class="p-3 text-white" style="background-color: #3F52E3;">Statistiques d'accès à eServices</div>
+        <div class="p-3 text-white" style="background-color: #3F52E3;">
+          <img alt="" src="<?= ASSETS_ICONS ?>statistique.png" class="book-icon" style="display: inline;margin-right: 5px;margin-bottom:5px;" />
+          Statistiques d'accès à eServices
+        </div>
         <canvas id="visitorsChart" class="bg-light" style="background-color: #eee;"></canvas>
       </div>
 

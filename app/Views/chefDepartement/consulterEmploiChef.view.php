@@ -22,9 +22,17 @@
         </div>
         <div class="tache">
 
-            <a href="<?= URL_ROOT ?>home">Acceuil</a>
+
+            <a href="<?= URL_ROOT ?>home">
+                <img alt="" src="<?= ASSETS_ICONS ?>acceuil.svg" class="book-icon" />
+                Acceuil
+            </a>
+
             <?php foreach (ACC_TYPES[$_SESSION['user_data']->type] as $acc_type => $link) { ?>
-                <a href="<?= URL_ROOT . $link ?>"><?= $acc_type ?></a>
+                <a href="<?= URL_ROOT . $link ?>">
+                    <img alt="" src="<?= ASSETS_ICONS . ICONS_NAMES[$_SESSION['user_data']->type][$acc_type] ?>" class="book-icon" />
+                    <?= $acc_type ?>
+                </a>
             <?php } ?>
 
         </div>
@@ -71,7 +79,7 @@
                 </div>
             <?php } else { ?>
                 <div class="card card-deck bg-light pt-3 mb-5 d-flex flex-column">
-                    <h2 class="ms-3 mb-4"><?=$schedule_rows[0]->name .' '. $schedule_rows[0]->level?></h2>
+                    <h2 class="ms-3 mb-4"><?= $schedule_rows[0]->name . ' ' . $schedule_rows[0]->level ?></h2>
                     <div class="container mb-3">
                         <div class="table-responsive">
                             <table class="table table-bordered text-center">

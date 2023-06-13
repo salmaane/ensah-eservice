@@ -65,12 +65,38 @@ define('ACC_TYPES',
         ],
         'chefDepartement' =>  [
             'Consulter emploi du temps'=>'home/consulterEmploi',
-            'consulter modules et professeurs du departement'=>'home/consulterModuleChef',
+            'Modules et professeurs du departement'=>'home/consulterModuleChef',
         ],
         'coordinator' => [
             'Consulter les modules'=>'home/consulterModule',
             'Gerer emploi du temps'=>'home/gererEmploi',
-            'Consulter les descriptifs du filière'=>'home/consulterDescriptif'
+            'Descriptif du filière'=>'home/consulterDescriptif'
+        ],
+    ]
+);
+
+define(
+    'ICONS_NAMES',
+    [
+        'administrateur' => [
+            'Créer département' => 'departement.svg',
+            'Créer filière' => 'filiere.png',
+            'Créer compte utilisateur' => 'compte.png',
+            'Designer cordinateur'  => 'coordinator.png',
+            'Designer chef departement'  => 'chef.png',
+        ],
+        'professeur' => [
+            'Consulter emploi du temps' => 'emploi.svg',
+            'Consulter les modules' => 'module.png',
+        ],
+        'chefDepartement' =>  [
+            'Consulter emploi du temps' => 'emploi.svg',
+            'Modules et professeurs du departement' => 'module.png',
+        ],
+        'coordinator' => [
+            'Consulter les modules' => 'module.png',
+            'Gerer emploi du temps' => 'emploi.svg',
+            'Descriptif du filière' => 'descriptif.png'
         ],
     ]
 );
